@@ -2,10 +2,24 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import LoginContainer from "./bundles/user/components/Login/LoginContainer";
+import purple from '@material-ui/core/colors/purple';
+import green from '@material-ui/core/colors/green';
+
+import LoginContainer from "./bundles/user/components/Login/Login.container";
 import Dashboard from "./bundles/user/components/Dashboard/Dashboard";
 import NotFound from "./bundles/common/components/NotFound/NotFound";
+
+const theme = createMuiTheme({
+    palette: {
+        primary: green,
+        secondary: green,
+    },
+    status: {
+        danger: 'orange',
+    },
+});
 
 const checkAuth = (nextState, replace, callback) => {
     console.log('...');
@@ -18,19 +32,19 @@ const checkAuth = (nextState, replace, callback) => {
     return callback();
 };
 
-const App = ({ store })  => (
-    <Provider store={store}>
-        <Router>
-            <div>
+const App = ({ classes, store })  => (
+    <MuiThemeProvider theme={theme}>
+        <Provider store={store}>
+            <Router>
                 <Switch>
                     <Route exact path="/" component={LoginContainer}/>
                     <Route exact path="/dashboard" component={Dashboard}/>
                     <Route exact path="/login" component={LoginContainer} />
                     <Route exact path="*" component={NotFound} />
                 </Switch>
-            </div>
-        </Router>
-    </Provider>
+            </Router>
+        </Provider>
+    </MuiThemeProvider>
 );
 
 App.propTypes = {

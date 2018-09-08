@@ -1,28 +1,24 @@
 import {
-    AUTHENTICATE,
+    AUTHENTICATE_PENDING,
     AUTHENTICATE_FAILED,
     AUTHENTICATE_SUCCESS,
-    AUTHENTICATE_PENDING,
-} from '../actions/userActionsConstants'
+} from '../../actions/userActionsConstants'
 
 /**
  * Default user object before any authentication
  * @type {{formState: {username: string, password: string}, error: string, currentlySending: boolean, loggedIn: boolean, data: {}}}
  */
 let initialState = {
-    formState: {
-        username: '',
-        password: ''
-    },
     error: '',
     currentlySending: false,
     loggedIn: false,
+    isLoading: false,
     data: {}
 };
 
 const user = (state = initialState, action) => {
     switch (action.type) {
-        case AUTHENTICATE:
+        case AUTHENTICATE_PENDING:
             console.log('AUTHENTICATE');
 
             return {
@@ -40,8 +36,6 @@ const user = (state = initialState, action) => {
                 loggedIn: true,
                 data: action.payload
             };
-        case AUTHENTICATE_PENDING:
-            return state;
         default:
             return state;
     }

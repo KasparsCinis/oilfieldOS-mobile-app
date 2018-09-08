@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom'
 import App from './App';
 import {createStore} from "redux";
-import userReducer from "./bundles/user/reducers/userReducers";
+import userReducer from "./bundles/user/components/Login/Login.reducer";
 
 const store = createStore(userReducer);
 

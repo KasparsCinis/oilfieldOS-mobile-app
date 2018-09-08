@@ -3,6 +3,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import React from "react";
@@ -10,17 +11,21 @@ import LogoPicture from '../../../../assets/logos/logo_126px.png';
 
 const styles = theme => ({
     layout: {
-        width: 'auto',
         display: 'block', // Fix IE11 issue.
-        marginLeft: theme.spacing.unit * 3,
-        marginRight: theme.spacing.unit * 3,
+        paddingLeft: theme.spacing.unit * 3,
+        paddingRight: theme.spacing.unit * 3,
+        paddingTop: theme.spacing.unit * 3,
+        position: 'fixed',
+        width: `calc(100% - ${theme.spacing.unit * 6}px)`,
+        height: '100%',
+        backgroundColor:theme.palette.primary.A100
+    },
+    paper: {
         [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
             width: 400,
             marginLeft: 'auto',
             marginRight: 'auto',
         },
-    },
-    paper: {
         alignItems: 'center',
         padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
     },
@@ -43,41 +48,43 @@ const Login = ({ classes, authenticate }) => {
     let password;
 
     return (
-        <div className={classes.paper}>
-            <div align='center'>
-                <img src={LogoPicture}></img>
-            </div>
-            <Typography variant='headline' align='center' gutterBottom>
-                Sign in
-            </Typography>
-            <Typography variant='subheading' align='center' gutterBottom>
-                Use your oilfieldOS account.
-            </Typography>
-            <form className={classes.form} onSubmit={e => {
-                e.preventDefault();
-                console.log(username, password);
-                authenticate({
-                    'username': username,
-                    'password': password
-                });
-            }}>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="username">Email</InputLabel>
-                    <Input id="username" ref={username} />
-                </FormControl>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="password">Password</InputLabel>
-                    <Input id="password" ref={password} />
-                </FormControl>
-                <Button variant='flat' size='small' align='left' color='default'>
-                    Forgot password?
-                </Button>
-                <Button className={classes.submit} variant="raised" color="primary" type="submit" fullWidth>
-                    Login
-                </Button>
-            </form>
+        <div className={classes.layout}>
+            <Paper className={classes.paper}>
+                <div align='center'>
+                    <img src={LogoPicture}></img>
+                </div>
+                <Typography variant='headline' align='center' gutterBottom>
+                    Sign in
+                </Typography>
+                <Typography variant='subheading' align='center' gutterBottom>
+                    Use your oilfieldOS account.
+                </Typography>
+                <form className={classes.form} onSubmit={e => {
+                    e.preventDefault();
+
+                    authenticate(
+                        username,
+                        password
+                    );
+                }}>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="username">Email</InputLabel>
+                        <Input id="username" onChange={event => username = event.target.value} />
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="password">Password</InputLabel>
+                        <Input id="password" onChange={event => password = event.target.value} />
+                    </FormControl>
+                    <Button variant='flat' size='small' align='left' color='default'>
+                        Forgot password?
+                    </Button>
+                    <Button className={classes.submit} variant="raised" color="primary" type="submit" fullWidth>
+                        Login
+                    </Button>
+                </form>
+            </Paper>
         </div>
-        )
-}
+    )
+};
 
 export default withStyles(styles)(Login);

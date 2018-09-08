@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Heading, Input, Button, Card } from 'rebass';
 import { connect } from 'react-redux';
-import { authenticate } from '../../actions/userActions';
+import { authenticateRequest } from './Login.actions';
+import { loginQuery } from './Login.actions';
 
 import Login from './Login'
 
@@ -27,10 +28,16 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const loginSubmit = (dispatch) => ({
-    authenticate: formData => dispatch(authenticate({
-        'username': formData.username,
-        'password': formData.password
-    }))
+    authenticate: (username, password) => {
+
+        dispatch(authenticateRequest(
+            username,
+            password
+        ));
+
+        console.log(password, username);
+
+    }
 })
 
 export default connect( mapStateToProps, loginSubmit )(Login);
