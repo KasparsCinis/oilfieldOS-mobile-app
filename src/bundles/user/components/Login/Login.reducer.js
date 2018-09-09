@@ -23,7 +23,7 @@ const user = (state = initialState, action) => {
 
             return {
                 ...state,
-                currentlySending: true,
+                isLoading: true,
                 loggedIn: false
             };
         case AUTHENTICATE_FAILED:
@@ -32,7 +32,7 @@ const user = (state = initialState, action) => {
             console.log(action.payload);
             return {
                 ...state,
-                currentlySending: false,
+                isLoading: false,
                 loggedIn: true,
                 data: action.payload
             };
