@@ -1,7 +1,9 @@
 import {
     AUTHENTICATE_PENDING,
-    AUTHENTICATE_LOGOUT
-} from '../../actions/userActionsConstants'
+    AUTHENTICATE_LOGOUT,
+    AUTHENTICATE_FAILED,
+    AUTHENTICATE_SUCCESS
+} from './Login.constants'
 
 /**
  * Tries to login the user
@@ -16,9 +18,30 @@ export const authenticateRequest = (username, password) => ({
 });
 
 /**
- *
  * @type {{type: string}}
  */
-export const authenticateLogout = ({
-    type: AUTHENTICATE_LOGOUT
+export function authenticateLogout() {
+    return {
+        type: AUTHENTICATE_LOGOUT
+    };
+}
+
+/**
+ * @type {{type: string}}
+ */
+export function authenticateFailed() {
+    return {
+        type: AUTHENTICATE_FAILED
+    };
+}
+
+/**
+ * @param token
+ * @param userData
+ * @returns {{type: string, token: *, userData: *}}
+ */
+export const authenticateSuccess = (token, userData) => ({
+    type: AUTHENTICATE_SUCCESS,
+    token,
+    userData
 });

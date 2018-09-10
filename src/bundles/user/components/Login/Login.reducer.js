@@ -2,7 +2,8 @@ import {
     AUTHENTICATE_PENDING,
     AUTHENTICATE_FAILED,
     AUTHENTICATE_SUCCESS,
-} from '../../actions/userActionsConstants'
+    AUTHENTICATE_LOGOUT
+} from './Login.constants'
 
 /**
  * Default user object before any authentication
@@ -13,28 +14,52 @@ let initialState = {
     currentlySending: false,
     loggedIn: false,
     isLoading: false,
-    data: {}
+    user: {
+        firstName:'',
+        lastName:'',
+        email:'',
+        permissions: [],
+    },
+    company: {}
 };
 
 const user = (state = initialState, action) => {
+
     switch (action.type) {
         case AUTHENTICATE_PENDING:
-            console.log('AUTHENTICATE');
-
             return {
                 ...state,
                 isLoading: true,
                 loggedIn: false
             };
         case AUTHENTICATE_FAILED:
-            return state;
+            return {
+                ...state,
+                isLoading: false,
+                loggedIn: false
+            };
         case AUTHENTICATE_SUCCESS:
-            console.log(action.payload);
             return {
                 ...state,
                 isLoading: false,
                 loggedIn: true,
-                data: action.payload
+                user: {
+                    firstName: action.firstName,
+                    lastName: action.lastName,
+                    email: action.email,
+                }
+            };
+        case AUTHENTICATE_LOGOUT:
+            /**
+             * Reset all the user state data on logout
+             */
+
+            return {
+                ...state,
+                isLoading: false,
+                loggedIn: false,
+                user: {},
+                company: []
             };
         default:
             return state;

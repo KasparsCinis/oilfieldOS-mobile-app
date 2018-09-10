@@ -1,6 +1,6 @@
 import React from "react";
 import LoginContainer from "../bundles/user/components/Login/Login.container";
-
+import {withRouter} from 'react-router';
 
 class LoginLayout extends React.Component {
 
@@ -9,6 +9,7 @@ class LoginLayout extends React.Component {
             <LoginContainer></LoginContainer>
         );
     }
+
 }
 
-export default LoginLayout;
+export default withRouter(LoginLayout);

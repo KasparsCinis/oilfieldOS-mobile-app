@@ -13,6 +13,7 @@ import Dashboard from "./bundles/user/components/Dashboard/Dashboard";
 import NotFound from "./bundles/common/components/NotFound/NotFound";
 import Loader from "./bundles/common/components/Loader/Loader";
 import Login from "./bundles/user/components/Login/Login";
+import history from './components/history';
 
 const theme = createMuiTheme({
     palette: {
@@ -45,7 +46,7 @@ const App = ({ classes, store, isLoading })  => (
             <Router>
                 <Switch>
                     {layoutRoutes.map((prop, key) => {
-                        return <Route path={prop.path} component={prop.component} key={key} />;
+                        return <Route exact history={history} path={prop.path} component={prop.component} key={key} />;
                     })}
                 </Switch>
             </Router>

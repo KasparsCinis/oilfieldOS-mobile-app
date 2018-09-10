@@ -53,8 +53,6 @@ const Loader = ({ classes, isLoading}) => {
                         <br/>
                         Loading, please wait
                     </Grid>
-
-
                 </div>
             </div>
         </Fade>

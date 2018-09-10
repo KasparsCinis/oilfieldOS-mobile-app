@@ -5,6 +5,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 import React from "react";
 import LogoPicture from '../../../../assets/logos/logo_126px.png';
@@ -18,7 +19,7 @@ const styles = theme => ({
         position: 'fixed',
         width: `calc(100% - ${theme.spacing.unit * 6}px)`,
         height: '100%',
-        backgroundColor:theme.palette.primary.A100
+        backgroundColor: theme.palette.primary.A100
     },
     paper: {
         [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
@@ -42,7 +43,7 @@ const styles = theme => ({
     },
 });
 
-const Login = ({ classes, authenticate }) => {
+const Login = ({ classes, authenticate, error }) => {
 
     let username;
     let password;
@@ -67,13 +68,15 @@ const Login = ({ classes, authenticate }) => {
                         password
                     );
                 }}>
-                    <FormControl margin="normal" required fullWidth>
+                    <FormControl margin="normal" required fullWidth error={error.length > 0}>
                         <InputLabel htmlFor="username">Email</InputLabel>
                         <Input id="username" onChange={event => username = event.target.value} />
+                        <FormHelperText>{error}</FormHelperText>
                     </FormControl>
-                    <FormControl margin="normal" required fullWidth>
+                    <FormControl margin="normal" required fullWidth error={error.length > 0}>
                         <InputLabel htmlFor="password">Password</InputLabel>
                         <Input id="password" onChange={event => password = event.target.value} />
+                        <FormHelperText>{error}</FormHelperText>
                     </FormControl>
                     <Button variant='flat' size='small' align='left' color='default'>
                         Forgot password?
