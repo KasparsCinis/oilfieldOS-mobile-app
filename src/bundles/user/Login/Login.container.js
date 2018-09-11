@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
     authenticateRequest,
-    authenticateLogout,
     authenticateFailed,
     authenticateSuccess
 } from './Login.actions'
 import { loginQuery } from './Login.service';
-import history from '../../../components/history';
+import { activateLoader, disableLoader } from '../../common/components/Loader/Loader';
 import Login from './Login'
+import Session from '../Session/Session';
 
 let errorMessage = "";
 
@@ -38,6 +38,8 @@ const loginSubmit = (dispatch) => ({
             password
         ));
 
+        activateLoader();
+
         loginQuery(username, password)
             .then(response => response.json())
             .then(response => {
@@ -45,26 +47,29 @@ const loginSubmit = (dispatch) => ({
                 if (response.status == 'error') {
                     errorMessage = response.message;
 
+                    disableLoader();
+
                     dispatch(authenticateFailed());
                 }
                 else if (response.status == 'success') {
                     errorMessage = "";
 
-                    dispatch(authenticateSuccess(response.token, response.userData));
+                    localStorage.setItem('token', response.token);
 
-                    history.push(`/`)
+                    disableLoader();
+
+                    dispatch(authenticateSuccess(response.token));
+
+                    Session.fetchUserDataIfTokenExists(dispatch);
                 } else {
-                    errorMessage = "";
+                    errorMessage = "Something went wrong";
 
-                    /**
-                     * Unknown state, reset to default login form
-                     */
-                    dispatch(authenticateLogout());
+                    disableLoader();
                 }
 
             })
             .catch(error => {
-                dispatch(authenticateLogout());
+                disableLoader();
 
                 console.error('Error:', error)
             });

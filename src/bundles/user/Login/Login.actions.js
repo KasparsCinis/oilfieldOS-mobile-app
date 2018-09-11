@@ -1,6 +1,5 @@
 import {
     AUTHENTICATE_PENDING,
-    AUTHENTICATE_LOGOUT,
     AUTHENTICATE_FAILED,
     AUTHENTICATE_SUCCESS
 } from './Login.constants'
@@ -20,15 +19,6 @@ export const authenticateRequest = (username, password) => ({
 /**
  * @type {{type: string}}
  */
-export function authenticateLogout() {
-    return {
-        type: AUTHENTICATE_LOGOUT
-    };
-}
-
-/**
- * @type {{type: string}}
- */
 export function authenticateFailed() {
     return {
         type: AUTHENTICATE_FAILED
@@ -38,10 +28,9 @@ export function authenticateFailed() {
 /**
  * @param token
  * @param userData
- * @returns {{type: string, token: *, userData: *}}
+ * @returns {{type: string, token: *}}
  */
-export const authenticateSuccess = (token, userData) => ({
+export const authenticateSuccess = (token) => ({
     type: AUTHENTICATE_SUCCESS,
-    token,
-    userData
+    token
 });

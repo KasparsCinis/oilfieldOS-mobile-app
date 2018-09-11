@@ -55,7 +55,7 @@ const dashboardRoutes = [
     },
     {
         path: "/user",
-        sidebarName: "User Profile",
+        sidebarName: "Session Profile",
         navbarName: "Profile",
         icon: "content_paste",
         component: NotFoundContainer

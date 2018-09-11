@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import { BrowserRouter, Link } from 'react-router-dom';
 
 import React from "react";
 import LogoPicture from '../../../assets/logos/logo_126px.png';
@@ -40,7 +39,7 @@ const styles = theme => ({
         marginTop: theme.spacing.unit,
     },
     submit: {
-        marginTop: theme.spacing.unit * 6,
+        marginTop: theme.spacing.unit * 3,
     },
 });
 
@@ -53,7 +52,7 @@ const Login = ({ classes, authenticate, error }) => {
         <div className={classes.layout}>
             <Paper className={classes.paper}>
                 <div align='center'>
-                    <img src={LogoPicture}></img>
+                    <img src={LogoPicture} />
                 </div>
                 <Typography variant='headline' align='center' gutterBottom>
                     Sign in
@@ -79,9 +78,6 @@ const Login = ({ classes, authenticate, error }) => {
                         <Input id="password" type='password' onChange={event => password = event.target.value} />
                         <FormHelperText>{error}</FormHelperText>
                     </FormControl>
-                    <Button variant='flat' size='small' align='left' color='default'>
-                        Forgot password?
-                    </Button>
                     <Button className={classes.submit} variant="raised" color="primary" type="submit" fullWidth>
                         Login
                     </Button>

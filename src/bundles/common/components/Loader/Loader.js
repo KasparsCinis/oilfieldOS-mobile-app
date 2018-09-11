@@ -14,9 +14,7 @@ import { connect } from 'react-redux';
 import React from "react";
 import LogoPicture from '../../../../assets/logos/logo_126px.png';
 
-const mapStateToProps = (state, ownProps) => ({
-    isLoading: state.isLoading
-})
+let isLoading = false;
 
 const styles = theme => ({
     loader: {
@@ -42,7 +40,7 @@ const styles = theme => ({
     }
 });
 
-const Loader = ({ classes, isLoading}) => {
+const Loader = ({ classes }) => {
 
     return (
         <Fade in={isLoading}>
@@ -60,6 +58,13 @@ const Loader = ({ classes, isLoading}) => {
 };
 
 export default compose(
-    withStyles(styles),
-    connect(mapStateToProps)
+    withStyles(styles)
 )(Loader);
+
+export function activateLoader() {
+    isLoading = true;
+    console.log(isLoading);
+}
+export function disableLoader() {
+    isLoading = true;
+}
