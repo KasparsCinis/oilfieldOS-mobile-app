@@ -6,9 +6,10 @@ import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 import React from "react";
-import LogoPicture from '../../../../assets/logos/logo_126px.png';
+import LogoPicture from '../../../assets/logos/logo_126px.png';
 
 const styles = theme => ({
     layout: {
@@ -75,7 +76,7 @@ const Login = ({ classes, authenticate, error }) => {
                     </FormControl>
                     <FormControl margin="normal" required fullWidth error={error.length > 0}>
                         <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input id="password" onChange={event => password = event.target.value} />
+                        <Input id="password" type='password' onChange={event => password = event.target.value} />
                         <FormHelperText>{error}</FormHelperText>
                     </FormControl>
                     <Button variant='flat' size='small' align='left' color='default'>

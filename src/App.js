@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
@@ -9,10 +9,10 @@ import layoutRoutes from "./layouts/index.js";
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 
-import Dashboard from "./bundles/user/components/Dashboard/Dashboard";
+import Dashboard from "./bundles/user/Dashboard/Dashboard";
 import NotFound from "./bundles/common/components/NotFound/NotFound";
 import Loader from "./bundles/common/components/Loader/Loader";
-import Login from "./bundles/user/components/Login/Login";
+import Login from "./bundles/user/Login/Login";
 import history from './components/history';
 
 const theme = createMuiTheme({
@@ -43,10 +43,10 @@ const mapStateToProps = (state, ownProps) => ({
 const App = ({ classes, store, isLoading })  => (
     <MuiThemeProvider theme={theme}>
         <Provider store={store}>
-            <Router>
+            <Router history={history}>
                 <Switch>
                     {layoutRoutes.map((prop, key) => {
-                        return <Route exact history={history} path={prop.path} component={prop.component} key={key} />;
+                        return <Route path={prop.path} component={prop.component} key={key} />;
                     })}
                 </Switch>
             </Router>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import {
     authenticateRequest,
     authenticateLogout,
@@ -9,7 +8,7 @@ import {
     authenticateSuccess
 } from './Login.actions'
 import { loginQuery } from './Login.service';
-import history from '../../../../components/history';
+import history from '../../../components/history';
 import Login from './Login'
 
 let errorMessage = "";
@@ -25,11 +24,6 @@ class LoginContainer extends Component {
 
         this.loginSubmit = this.loginSubmit.bind(this);
     }
-
-    componentWillMount() {
-        this.props.history.push('/');
-    }
-
 }
 
 const mapStateToProps = (state, ownProps) => ({
@@ -37,6 +31,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const loginSubmit = (dispatch) => ({
+
     authenticate: (username, password) => {
         dispatch(authenticateRequest(
             username,
@@ -57,9 +52,7 @@ const loginSubmit = (dispatch) => ({
 
                     dispatch(authenticateSuccess(response.token, response.userData));
 
-                    //this.props.history.push("/dashboard");
-                    //history.push('/dashboard');
-                    history.push(`/dashboard`)
+                    history.push(`/`)
                 } else {
                     errorMessage = "";
 
@@ -78,4 +71,4 @@ const loginSubmit = (dispatch) => ({
     }
 })
 
-export default withRouter(connect( mapStateToProps, loginSubmit )(Login));
+export default connect( mapStateToProps, loginSubmit )(Login);

@@ -1,5 +1,4 @@
 import React from "react";
-import {withRouter} from 'react-router';
 import PropTypes from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -133,10 +132,9 @@ class NormalLayout extends React.Component {
                         isMobile={this.state.isMobile}
                         {...rest}
                     />
-                    {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
-                    /*{(
+                    {(
                         <div className={classes.map}>{switchRoutes}</div>
-                    )}*/ //?????????????????????????????????
+                    )}
                     {<Footer />}
                 </div>
             </div>
@@ -148,4 +146,4 @@ NormalLayout.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withRouter(withStyles(layoutStyles)(NormalLayout));
+export default withStyles(layoutStyles)(NormalLayout);
