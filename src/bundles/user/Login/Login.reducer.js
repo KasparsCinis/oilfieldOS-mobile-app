@@ -12,7 +12,7 @@ let initialState = {
     loggedIn: false,
 };
 
-const user = (state = initialState, action) => {
+const login = (state = initialState, action) => {
 
     switch (action.type) {
         case AUTHENTICATE_PENDING:
@@ -35,4 +35,4 @@ const user = (state = initialState, action) => {
     }
 }
 
-export default user
+export default login

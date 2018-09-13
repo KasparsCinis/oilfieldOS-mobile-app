@@ -1,3 +1,4 @@
+import React, {Component} from "react";
 import { connect } from 'react-redux';
 import {
     authenticateRequest,
@@ -8,8 +9,30 @@ import { loginQuery } from './Login.service';
 import { activateLoader, disableLoader } from '../../common/Loader/Loader.container';
 import Login from './Login'
 import Session from '../Session/Session';
+import history from "../../../components/history";
 
 let errorMessage = "";
+
+class LoginContainer extends Component {
+
+    constructor(props) {
+        super(props);
+
+        /**
+         * If the user has logged in redirect to dashboard
+         */
+        if (Session.getCurrentUser() != null) {
+            history.push('/dashboard');
+        }
+    }
+
+    render() {
+        return <Login
+            error={this.props.error}
+            authenticate={this.props.authenticate}
+        />;
+    }
+}
 
 const mapStateToProps = (state, ownProps) => ({
     error: errorMessage
@@ -44,7 +67,7 @@ const loginSubmit = (dispatch) => ({
                     disableLoader();
 
                     dispatch(authenticateSuccess(response.token));
-
+                    console.log('?????????????????', response.status);
                     Session.fetchUserDataIfTokenExists(dispatch);
                 } else {
                     errorMessage = "Something went wrong";
@@ -61,4 +84,4 @@ const loginSubmit = (dispatch) => ({
     }
 })
 
-export default connect( mapStateToProps, loginSubmit )(Login);
+export default connect( mapStateToProps, loginSubmit )(LoginContainer);

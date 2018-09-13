@@ -1,10 +1,14 @@
-import React from "react";
 import history from "../../../components/history";
-import {fetchUserData} from "./Session.service";
+import {fetchUserData, fetchUserCompanyData} from "./Session.service";
+import {
+    sessionFailed,
+    sessionLoading,
+    sessionSuccess,
+} from "./Session.actions";
 
 let store;
 
-export default class Session extends React.PureComponent{
+export default class Session {
     /**
      * Saves global redux store so it is accessible later on
      * @param reduxStore
@@ -20,21 +24,61 @@ export default class Session extends React.PureComponent{
             return false;
         }
 
-        console.log(store.getState());
-
         /**
          * Fetch user data
          */
         fetchUserData(token)
             .then(response => response.json())
             .then(response => {
-                console.log(response);
+
+                let userData = response.userData;
+                let domain = response.userData.companies[response.userData.activeCompany].url;
+
+                /**
+                 * Fetch the user company data (permissions / projects) because it is on a separate domain (with different DB),
+                 * so it has to be a separate API call
+                 */
+                fetchUserCompanyData(token, domain)
+                    .then(response => response.json())
+                    .then(response => {
+
+                        userData.permissions = response.permissions;
+                        userData.activeWell  = response.activeWell;
+                        userData.wells       = response.wells;
+
+                        store.dispatch(sessionSuccess(userData));
+
+                        history.push('/dashboard');
+                    })
+                    .catch(error => {
+                        store.dispatch(sessionFailed());
+
+                        console.error('Error:', error)
+                    });
+
             })
             .catch(error => {
-                //dispatch( );
+                store.dispatch(sessionFailed());
 
                 console.error('Error:', error)
             });
+
+    }
+
+    /**
+     * Gets current user from the session
+     * returns null if no user currently logged in
+     * @returns {*}
+     */
+    static getCurrentUser() {
+        if (store.getState().session.isAuthorized) {
+            return store.getState().session.user;
+        }
+
+        return null;
+    }
+
+    static getCurrentDomain() {
 
     }
 }

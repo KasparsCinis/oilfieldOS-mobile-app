@@ -5,6 +5,7 @@ import {
 } from './Session.constants'
 
 const initialState = {
+    isAuthorized: false,
     user: {
         firstName:'',
         lastName:'',
@@ -20,20 +21,18 @@ const session = (state = initialState, action) => {
         case SESSION_LOADING:
             return {
                 ...state,
-                isLoading: true,
             };
         case SESSION_FAILED:
             return {
                 ...state,
-                isLoading: false,
-                loggedIn: false
+                isAuthorized: false,
+                user: initialState.user
             };
         case SESSION_SUCCESS:
             return {
                 ...state,
-                isLoading: false,
-                loggedIn: true,
-                user: action.userData
+                isAuthorized: true,
+                user: action.user,
             };
         default:
             return state;

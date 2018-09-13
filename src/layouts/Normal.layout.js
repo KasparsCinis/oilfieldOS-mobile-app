@@ -8,8 +8,10 @@ import Footer from "./components/Footer/Footer.component";
 import Sidebar from "./components/Sidebar/Sidebar.component";
 
 import NotFoundContainer from '../bundles/common/NotFound/NotFound';
+import DashboardContainer from '../bundles/user/Dashboard/Dashboard.container';
 
 import logo from '../assets/logos/logo_126px.png';
+import Component from "../components/component";
 
 const layoutStyles = theme => ({
     wrapper: {
@@ -51,7 +53,7 @@ const dashboardRoutes = [
         sidebarName: "Dashboard",
         navbarName: "Material Dashboard",
         icon: "content_paste",
-        component: NotFoundContainer
+        component: DashboardContainer
     },
     {
         path: "/user",
@@ -72,7 +74,7 @@ const switchRoutes = (
     </Switch>
 );
 
-class NormalLayout extends React.Component {
+class NormalLayout extends Component {
 
     constructor(props) {
         super(props);

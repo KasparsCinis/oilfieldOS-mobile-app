@@ -1,7 +1,8 @@
 import {
     SESSION_LOADING,
     SESSION_FAILED,
-    SESSION_SUCCESS
+    SESSION_SUCCESS,
+    SESSION_COMPANY_SUCCESS
 } from './Session.constants'
 
 /**
@@ -16,14 +17,12 @@ export const sessionLoading = (token) => ({
 
 /**
  * Fetching user data succeeded
- * @param token
- * @param userData
- * @returns {{type: string, token: *, userData: *}}
+ * @param user
+ * @returns {{type: string, user: *}}
  */
-export const sessionSuccess = (token, userData) => ({
+export const sessionSuccess = (user) => ({
     type: SESSION_SUCCESS,
-    token,
-    userData
+    user
 });
 
 /**

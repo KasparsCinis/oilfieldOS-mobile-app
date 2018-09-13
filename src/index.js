@@ -7,10 +7,10 @@ import Session from './bundles/user/Session/Session';
 
 const store = createStore(rootReducer);
 
+Session.connectStore(store);
+Session.fetchUserDataIfTokenExists(store);
+
 render(
   <App store={store}/>,
   document.getElementById('root')
 );
-
-Session.connectStore(store);
-Session.fetchUserDataIfTokenExists(store);

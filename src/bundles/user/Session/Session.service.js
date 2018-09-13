@@ -3,21 +3,21 @@ import { config } from '../../../config';
 export const fetchUserData = (token) => {
     return fetch(`${config.main_domain_url}/user-api/user-data`, {
         method: 'POST',
-        headers: {
+        headers: new Headers({
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `${token}`
-        }
+            'Authorization': `Bearer ${token}`,
+        })
     });
 };
-export const fetchUserPermissions = (token, domain) => {
-    return fetch(`${domain}/user-api/login`, {
+export const fetchUserCompanyData = (token, domain) => {
+    return fetch(`${config.http_protocol}${domain}/api/user/user-data`, {
         method: 'POST',
-        credentials: 'include',
-        headers: {
+        headers: new Headers({
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
+            'Authorization': `Bearer ${token}`,
+        })
     });
+
 };
