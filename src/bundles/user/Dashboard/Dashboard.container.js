@@ -6,6 +6,8 @@ class DashboardContainer extends Component {
     constructor() {
         super();
 
+
+        console.log(1231123);
         //Check authentication
     }
 
