@@ -12,4 +12,5 @@ render(
   document.getElementById('root')
 );
 
-Session.fetchUserDataIfTokenExists(store.dispatch);
+Session.connectStore(store);
+Session.fetchUserDataIfTokenExists(store);

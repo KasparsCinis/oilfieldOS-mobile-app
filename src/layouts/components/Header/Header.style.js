@@ -6,7 +6,7 @@ import {
     infoColor,
     successColor,
     warningColor,
-    dangerColor, drawerWidth
+    dangerColor
 } from "../dashboard.style";
 
 const headerStyle = theme => ({

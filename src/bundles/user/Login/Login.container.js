@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
     authenticateRequest,
@@ -7,28 +5,15 @@ import {
     authenticateSuccess
 } from './Login.actions'
 import { loginQuery } from './Login.service';
-import { activateLoader, disableLoader } from '../../common/components/Loader/Loader';
+import { activateLoader, disableLoader } from '../../common/components/Loader/Loader.container';
 import Login from './Login'
 import Session from '../Session/Session';
 
 let errorMessage = "";
 
-class LoginContainer extends Component {
-
-    static propTypes = {
-        authenticate: PropTypes.func.isRequired
-    }
-
-    constructor(props) {
-        super(props);
-
-        this.loginSubmit = this.loginSubmit.bind(this);
-    }
-}
-
 const mapStateToProps = (state, ownProps) => ({
     error: errorMessage
-})
+});
 
 const loginSubmit = (dispatch) => ({
 
@@ -44,14 +29,14 @@ const loginSubmit = (dispatch) => ({
             .then(response => response.json())
             .then(response => {
 
-                if (response.status == 'error') {
+                if (response.status === 'error') {
                     errorMessage = response.message;
 
                     disableLoader();
 
                     dispatch(authenticateFailed());
                 }
-                else if (response.status == 'success') {
+                else if (response.status === 'success') {
                     errorMessage = "";
 
                     localStorage.setItem('token', response.token);

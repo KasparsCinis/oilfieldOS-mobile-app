@@ -1,20 +1,8 @@
-import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Typography from '@material-ui/core/Typography'
-import Paper from '@material-ui/core/Paper';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Fade from '@material-ui/core/Fade';
-import withStyles from '@material-ui/core/styles/withStyles';
-import compose from 'recompose/compose';
-import Grid from '@material-ui/core/Grid';
-import { connect } from 'react-redux';
-
+import withStyles from "@material-ui/core/styles/withStyles";
 import React from "react";
-import LogoPicture from '../../../../assets/logos/logo_126px.png';
-
-let isLoading = false;
+import Grid from "@material-ui/core/Grid/Grid";
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import Fade from "@material-ui/core/Fade/Fade";
 
 const styles = theme => ({
     loader: {
@@ -40,7 +28,7 @@ const styles = theme => ({
     }
 });
 
-const Loader = ({ classes }) => {
+const Loader = ({ classes, isLoading}) => {
 
     return (
         <Fade in={isLoading}>
@@ -57,14 +45,4 @@ const Loader = ({ classes }) => {
     )
 };
 
-export default compose(
-    withStyles(styles)
-)(Loader);
-
-export function activateLoader() {
-    isLoading = true;
-    console.log(isLoading);
-}
-export function disableLoader() {
-    isLoading = true;
-}
+export default withStyles(styles)(Loader);

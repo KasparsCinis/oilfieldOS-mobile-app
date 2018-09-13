@@ -52,7 +52,7 @@ const Login = ({ classes, authenticate, error }) => {
         <div className={classes.layout}>
             <Paper className={classes.paper}>
                 <div align='center'>
-                    <img src={LogoPicture} />
+                    <img src={LogoPicture} alt='oilfieldOS logo' />
                 </div>
                 <Typography variant='headline' align='center' gutterBottom>
                     Sign in

@@ -1,20 +1,26 @@
-import React, {Component} from "react";
-import {sessionLoading, sessionSuccess, sessionFailed} from "./Session.actions";
+import React from "react";
 import history from "../../../components/history";
-import {fetchUserData, fetchUserPermissions} from "./Session.service";
+import {fetchUserData} from "./Session.service";
 
+let store;
 
-export default class Session {
-    static fetchUserDataIfTokenExists(dispatch) {
+export default class Session extends React.PureComponent{
+    /**
+     * Saves global redux store so it is accessible later on
+     * @param reduxStore
+     */
+    static connectStore(reduxStore) {
+        store = reduxStore;
+    }
+
+    static fetchUserDataIfTokenExists() {
         let token = localStorage.getItem('token');
 
         if (token === null) {
             return false;
         }
 
-
-        console.log(token);
-        dispatch(sessionLoading(token));
+        console.log(store.getState());
 
         /**
          * Fetch user data
@@ -29,7 +35,7 @@ export default class Session {
 
                 console.error('Error:', error)
             });
-        //history.push(`/`);
+
     }
 }
 
