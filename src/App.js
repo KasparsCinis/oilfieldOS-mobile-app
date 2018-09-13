@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import layoutRoutes from "./layouts/index.js";
 import green from '@material-ui/core/colors/green';
 
-import Loader from "./bundles/common/components/Loader/Loader.container";
+import Loader from "./bundles/common/Loader/Loader.container";
 import history from './components/history';
 
 const theme = createMuiTheme({

@@ -7,7 +7,7 @@ import HeaderContainer from "./components/Header/Header.container";
 import Footer from "./components/Footer/Footer.component";
 import Sidebar from "./components/Sidebar/Sidebar.component";
 
-import NotFoundContainer from '../bundles/common/components/NotFound/NotFound';
+import NotFoundContainer from '../bundles/common/NotFound/NotFound';
 
 import logo from '../assets/logos/logo_126px.png';
 

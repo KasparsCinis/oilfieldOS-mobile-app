@@ -5,7 +5,7 @@ import {
     authenticateSuccess
 } from './Login.actions'
 import { loginQuery } from './Login.service';
-import { activateLoader, disableLoader } from '../../common/components/Loader/Loader.container';
+import { activateLoader, disableLoader } from '../../common/Loader/Loader.container';
 import Login from './Login'
 import Session from '../Session/Session';
 
