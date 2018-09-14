@@ -45,7 +45,7 @@ const sidebarStyle = theme => ({
             transform: `translate3d(${drawerWidth}px, 0, 0)`,
             ...transition
         },
-        backgroundColor: theme.palette.primary.A100,
+        backgroundColor: theme.palette.primary.A400,
     },
     logo: {
         position: "relative",
@@ -149,6 +149,9 @@ const sidebarStyle = theme => ({
         textAlign: "center",
         verticalAlign: "middle",
         color: "rgba(255, 255, 255, 0.8)"
+    },
+    nested: {
+        paddingLeft: theme.spacing.unit * 4,
     },
     itemText: {
         ...defaultFont,

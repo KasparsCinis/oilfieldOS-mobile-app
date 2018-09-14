@@ -78,6 +78,55 @@ export default class Session {
         return null;
     }
 
+    /**
+     * @todo
+     * @returns {null}
+     */
+    static getCurrentProject() {
+        let user = this.getCurrentUser();
+
+        if (user == null) {
+            return null;
+        }
+
+    }
+
+    /**
+     * Returns current company
+     * @returns {*}
+     */
+    static getCurrentCompany() {
+        let user = this.getCurrentUser();
+
+        if (user == null) {
+            return null;
+        }
+
+        return user.companies[user.activeCompany];
+    }
+
+    /**
+     * @param permission
+     * @returns {boolean}
+     */
+    static hasPermission(permission) {
+        let user = this.getCurrentUser();
+        let company = this.getCurrentCompany();
+
+        if (user == null || company == null) {
+            return null;
+        }
+
+        if (company.role === 'A' || company.role === 'S') {
+            return true;
+        }
+
+        return Boolean(user.permissions[permission]);
+    }
+
+    /**
+     * @todo
+     */
     static getCurrentDomain() {
 
     }

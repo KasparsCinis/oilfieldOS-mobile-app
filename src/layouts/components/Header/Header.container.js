@@ -8,14 +8,12 @@ class HeaderContainer extends React.PureComponent {
 
         this.state = {
             shouldShow: true,
+            profileAnchorEl: null
         };
 
         this.lastScroll = null;
 
         this.handleScroll = this.handleScroll.bind(this);
-        // Alternatively, you can throttle scroll events to avoid
-        // updating the state too often. Here using lodash.
-        // this.handleScroll = _.throttle(this.handleScroll.bind(this), 100);
     }
 
     componentDidMount() {
@@ -56,9 +54,5 @@ class HeaderContainer extends React.PureComponent {
         );
     }
 }
-
-HeaderContainer.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 export default HeaderContainer;

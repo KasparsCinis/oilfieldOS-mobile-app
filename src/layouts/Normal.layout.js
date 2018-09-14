@@ -10,7 +10,6 @@ import Sidebar from "./components/Sidebar/Sidebar.component";
 import NotFoundContainer from '../bundles/common/NotFound/NotFound';
 import DashboardContainer from '../bundles/user/Dashboard/Dashboard.container';
 
-import logo from '../assets/logos/logo_126px.png';
 import Component from "../components/component";
 
 const layoutStyles = theme => ({
@@ -29,7 +28,8 @@ const layoutStyles = theme => ({
         transition: "all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)",
         maxHeight: "100%",
         width: "100%",
-        overflowScrolling: "touch"
+        overflowScrolling: "touch",
+        height: "100%"
     },
     content: {
         marginTop: "70px",
@@ -43,7 +43,8 @@ const layoutStyles = theme => ({
         marginLeft: "auto"
     },
     map: {
-        marginTop: "70px"
+        marginTop: "70px",
+        height: "100%"
     }
 });
 
@@ -51,24 +52,38 @@ const dashboardRoutes = [
     {
         path: "/dashboard",
         sidebarName: "Dashboard",
-        navbarName: "Material Dashboard",
-        icon: "content_paste",
+        icon: 'home',
         component: DashboardContainer
     },
     {
-        path: "/user",
-        sidebarName: "Session Profile",
-        navbarName: "Profile",
-        icon: "content_paste",
+        path: "/analytics",
+        sidebarName: "Analytics",
+        icon: 'timeline',
         component: NotFoundContainer
+    },
+    {
+        sidebarName: "Analytics",
+        icon: 'timeline',
+        children: [
+            {
+                path: "/dashboard",
+                sidebarName: "Dashboard",
+                icon: 'home',
+                component: DashboardContainer
+            },
+            {
+                path: "/dashboard",
+                sidebarName: "Hello",
+                icon: 'home',
+                component: DashboardContainer
+            },
+        ]
     },
 ];
 
 const switchRoutes = (
     <Switch>
         {dashboardRoutes.map((prop, key) => {
-            if (prop.redirect)
-                return <Redirect from={prop.path} to={prop.to} key={key} />;
             return <Route path={prop.path} component={prop.component} key={key} />;
         })}
     </Switch>
@@ -121,7 +136,6 @@ class NormalLayout extends Component {
             <div className={classes.wrapper}>
                 <Sidebar
                     routes={dashboardRoutes}
-                    logo={logo}
                     handleDrawerToggle={this.handleDrawerToggle}
                     open={this.state.mobileOpen}
                     color="blue"
@@ -129,7 +143,6 @@ class NormalLayout extends Component {
                 />
                 <div className={classes.mainPanel} ref="mainPanel">
                     <HeaderContainer
-                        routes={dashboardRoutes}
                         handleDrawerToggle={this.handleDrawerToggle}
                         isMobile={this.state.isMobile}
                         {...rest}
