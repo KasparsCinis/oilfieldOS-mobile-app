@@ -2,7 +2,7 @@ import {
     SESSION_LOADING,
     SESSION_FAILED,
     SESSION_SUCCESS,
-    SESSION_COMPANY_SUCCESS
+    SESSION_LOGOUT
 } from './Session.constants'
 
 /**
@@ -32,5 +32,16 @@ export const sessionSuccess = (user) => ({
 export function sessionFailed() {
     return {
         type: SESSION_FAILED
+    };
+}
+
+
+/**
+ * Logouts the current user
+ * @type {{type: string}}
+ */
+export function sessionLogout() {
+    return {
+        type: SESSION_LOGOUT
     };
 }

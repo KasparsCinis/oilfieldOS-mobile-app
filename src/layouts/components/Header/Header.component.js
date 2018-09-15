@@ -8,18 +8,22 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
 import Button from "@material-ui/core/Button";
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 
 // @material-ui/icons
-import Menu from "@material-ui/icons/Menu";
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import { default as MenuIcon } from "@material-ui/icons/Menu";
 
 import headerStyle from "./Header.style.js";
 
-function Header({ classes, isShown, ...props }) {
+function Header({ classes, isShown, handleMenu, handleClose, handleLogout, profileAnchorEl, ...props }) {
 
     function getProject() {
         return 'Lochranza';
     }
 
+    const open = Boolean(profileAnchorEl);
     const appClassNames = classNames(classes.appBar, props.isMobile ? null : classes.appNormal, isShown ? null : classes.hidden);
 
     return (
@@ -31,7 +35,31 @@ function Header({ classes, isShown, ...props }) {
                     </Button>
                 </div>
                 <Hidden smDown implementation="css">
-                    <div>MEDIUMS SCREEN</div>
+                    <IconButton
+                        aria-owns={open ? 'menu-appbar' : null}
+                        aria-haspopup="true"
+                        onClick={handleMenu}
+                        color="inherit"
+                    >
+                        <AccountCircle />
+                    </IconButton>
+                    <Menu
+                        id="menu-appbar"
+                        anchorEl={profileAnchorEl}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        open={open}
+                        onClose={handleClose}
+                    >
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    </Menu>
                 </Hidden>
                 <Hidden mdUp implementation="css">
                     <IconButton
@@ -39,7 +67,7 @@ function Header({ classes, isShown, ...props }) {
                         aria-label="open drawer"
                         onClick={props.handleDrawerToggle}
                     >
-                        <Menu />
+                        <MenuIcon />
                     </IconButton>
                 </Hidden>
             </Toolbar>

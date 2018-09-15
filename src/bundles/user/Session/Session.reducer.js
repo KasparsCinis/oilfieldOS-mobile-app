@@ -1,7 +1,8 @@
 import {
     SESSION_LOADING,
     SESSION_FAILED,
-    SESSION_SUCCESS
+    SESSION_SUCCESS,
+    SESSION_LOGOUT
 } from './Session.constants'
 
 const initialState = {
@@ -33,6 +34,12 @@ const session = (state = initialState, action) => {
                 ...state,
                 isAuthorized: true,
                 user: action.user,
+            };
+        case SESSION_LOGOUT:
+            return {
+                ...state,
+                isAuthorized: false,
+                user: initialState.user,
             };
         default:
             return state;

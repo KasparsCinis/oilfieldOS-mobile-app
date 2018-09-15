@@ -4,6 +4,7 @@ import {
     sessionFailed,
     sessionLoading,
     sessionSuccess,
+    sessionLogout
 } from "./Session.actions";
 
 let store;
@@ -20,7 +21,7 @@ export default class Session {
     static fetchUserDataIfTokenExists() {
         let token = localStorage.getItem('token');
 
-        if (token === null) {
+        if (token == null || token === undefined) {
             return false;
         }
 
@@ -129,6 +130,17 @@ export default class Session {
      */
     static getCurrentDomain() {
 
+    }
+
+    /**
+     * Logs out the current user and redirect to login page
+     */
+    static logout() {
+        localStorage.removeItem('token');
+
+        store.dispatch(sessionLogout());
+
+        history.push('/user/login');
     }
 }
 

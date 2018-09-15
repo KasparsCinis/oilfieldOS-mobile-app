@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Header from './Header.component';
+import Session from "../../../bundles/user/Session/Session";
 
 class HeaderContainer extends React.PureComponent {
     constructor(props) {
@@ -14,6 +14,9 @@ class HeaderContainer extends React.PureComponent {
         this.lastScroll = null;
 
         this.handleScroll = this.handleScroll.bind(this);
+        this.handleMenu = this.handleMenu.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     componentDidMount() {
@@ -22,6 +25,21 @@ class HeaderContainer extends React.PureComponent {
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll, true);
+    }
+
+    handleMenu = event => {
+        this.setState({ profileAnchorEl: event.currentTarget });
+    };
+
+    handleClose = () => {
+        this.setState({ profileAnchorEl: null });
+    };
+
+    handleLogout = () => {
+
+        this.setState({ profileAnchorEl: null });
+
+        Session.logout();
     }
 
     handleScroll(event) {
@@ -44,10 +62,15 @@ class HeaderContainer extends React.PureComponent {
     }
 
     render() {
-        const { classes, ...rest } = this.props;
+        const { ...rest } = this.props;
+
         return (
             <Header
-                isShown={this.state.shouldShow ? true : false}
+                isShown={this.state.shouldShow}
+                handleMenu={this.handleMenu}
+                handleClose={this.handleClose}
+                handleLogout={this.handleLogout}
+                profileAnchorEl={this.state.profileAnchorEl}
                 {...rest}
             >
             </Header>
