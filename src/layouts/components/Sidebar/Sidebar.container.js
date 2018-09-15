@@ -11,17 +11,12 @@ class SidebarContainer extends React.Component {
         super(props);
 
         this.state = {
-            openSidebarModules: {2:false},
+            openSidebarModules: {},
+            openMobileProfileTab: false
         };
 
         this.handleModuleClick = this.handleModuleClick.bind(this);
-    }
-
-    componentDidMount() {
-
-        this.setState({
-            openSidebarModules: {2:false},
-        });
+        this.handleMobileTabToggle = this.handleMobileTabToggle.bind(this);
     }
 
     handleModuleClick(collapseKey) {
@@ -32,6 +27,12 @@ class SidebarContainer extends React.Component {
         this.setState(newState);
     }
 
+    handleMobileTabToggle() {
+        this.setState({
+            openMobileProfileTab: !this.state.openMobileProfileTab
+        })
+    }
+
     render() {
         const { logo, ...rest } = this.props;
 
@@ -39,7 +40,9 @@ class SidebarContainer extends React.Component {
             <Sidebar
                 logo={logo}
                 collapseOpen={this.state.openSidebarModules}
+                openMobileProfileTab={this.state.openMobileProfileTab}
                 handleModuleClick={this.handleModuleClick}
+                handleMobileTabToggle={this.handleMobileTabToggle}
                 {...rest}
             >
             </Sidebar>
@@ -50,6 +53,8 @@ class SidebarContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     logo: Session.getCurrentCompany() ? Session.getCurrentCompany().logo : '',
+    name: Session.getCurrentUser() ? Session.getCurrentUser().name : '',
+    email: Session.getCurrentUser() ? Session.getCurrentUser().email : '',
 });
 
 export default connect( mapStateToProps )(SidebarContainer);

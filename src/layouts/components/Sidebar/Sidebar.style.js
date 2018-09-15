@@ -135,7 +135,8 @@ const sidebarStyle = theme => ({
     },
     nested: {
         paddingLeft: theme.spacing.unit * 4,
-
+        backgroundColor: theme.palette.primary.A700,
+        
         [theme.breakpoints.up("md")]: {
             paddingLeft: "0px",
         }
@@ -178,6 +179,26 @@ const sidebarStyle = theme => ({
     },
     expandableIcon: {
         float: "right"
+    },
+    mobileContent: {
+        padding: "10px",
+        backgroundColor: 'white'
+    },
+    mobileAvatar: {
+        fontSize: "40px"
+    },
+    mobileTitle: {
+        fontSize: "13px"
+    },
+    mobileSubTitle: {
+        fontSize: "10px"
+    },
+    mobileTitleContent: {
+        display: 'flex',
+        justifyContent: 'space-between'
+    },
+    hidden: {
+        display: 'none'
     }
 });
 

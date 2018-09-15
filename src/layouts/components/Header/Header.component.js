@@ -57,7 +57,6 @@ function Header({ classes, isShown, handleMenu, handleClose, handleLogout, profi
                         open={open}
                         onClose={handleClose}
                     >
-                        <MenuItem onClick={handleClose}>Profile</MenuItem>
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </Menu>
                 </Hidden>

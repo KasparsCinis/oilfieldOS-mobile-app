@@ -13,18 +13,16 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
 import Collapse from '@material-ui/core/Collapse';
 import Divider from '@material-ui/core/Divider';
+import Typography from "@material-ui/core/Typography";
 
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 // core components
 import sidebarStyle from "./Sidebar.style.js";
 
-const Sidebar = ({ logo, collapseOpen, handleModuleClick, ...props }) => {
-    if (collapseOpen == undefined) {
-        collapseOpen = {};
-    }
-
+const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle, name, email, openMobileProfileTab, ...props }) => {
     // verifies if routeName is the one active (in browser input)
     function activeRoute(routeName) {
         return props.location.pathname.indexOf(routeName) > -1 ? true : false;
@@ -109,15 +107,16 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, ...props }) => {
     );
     var brand = (
         <div>
-            <Hidden smDown implementation="css">
-                <NavLink to='/dashboard'>
-                    <img src={logo} alt="logo" className={classes.logoImage}/>
-                </NavLink>
-            </Hidden>
+            <NavLink to='/dashboard'>
+                <img src={logo} alt="logo" className={classes.logoImage}/>
+            </NavLink>
         </div>
     );
     return (
         <div>
+            {/**
+             * Sidebar for mobile screens
+             */}
             <Hidden mdUp implementation="css">
                 <Drawer
                     variant="temporary"
@@ -131,9 +130,32 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, ...props }) => {
                         keepMounted: true // Better open performance on mobile.
                     }}
                 >
-                    {brand}
-                    <div className={classes.sidebarWrapper}>
+                    <div className={classes.mobileContent} onClick={handleMobileTabToggle}>
+                        <div>
+                            <AccountCircle className={classes.mobileAvatar} />
+                        </div>
+                        <div className={classes.mobileTitleContent}>
+                            <div>
+                                <Typography variant='body1' className={classes.mobileTitle}>
+                                    {name}
+                                </Typography>
+                                <Typography variant='body2' className={classes.mobileSubTitle}>
+                                    {email}
+                                </Typography>
+                            </div>
+                            {openMobileProfileTab ?
+                                <ExpandMore className={classes.expandableIcon} />
+                                :
+                                <ExpandLess className={classes.expandableIcon} />
+                            }
+                        </div>
+                    </div>
+                    <div className={openMobileProfileTab ? classes.hidden : classes.sidebarWrapper}>
                         {links}
+                    </div>
+
+                    <div className={openMobileProfileTab ? classes.sidebarWrapper : classes.hidden}>
+
                     </div>
                     {image !== undefined ? (
                         <div
@@ -143,6 +165,11 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, ...props }) => {
                     ) : null}
                 </Drawer>
             </Hidden>
+
+
+            {/**
+             * Sidebar for medium screens
+             */}
             <Hidden smDown implementation="css">
                 <Drawer
                     anchor="left"

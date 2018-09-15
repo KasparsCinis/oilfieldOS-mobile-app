@@ -10,6 +10,7 @@ const initialState = {
     user: {
         firstName:'',
         lastName:'',
+        name: '',
         email:'',
         activeCompany: null,
         companies: [],

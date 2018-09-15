@@ -42,7 +42,7 @@ export default class Session {
                 fetchUserCompanyData(token, domain)
                     .then(response => response.json())
                     .then(response => {
-
+                        userData.name = userData.firstName + ' ' + userData.lastName;
                         userData.permissions = response.permissions;
                         userData.activeWell  = response.activeWell;
                         userData.wells       = response.wells;
