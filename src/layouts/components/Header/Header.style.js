@@ -6,35 +6,33 @@ import {
     infoColor,
     successColor,
     warningColor,
-    dangerColor
+    dangerColor,
+    drawerWidth
 } from "../dashboard.style";
 
 const headerStyle = theme => ({
     appBar: {
-        backgroundColor: theme.palette.primary.A100,
-        boxShadow: "none",
+        backgroundColor: theme.palette.primary.A700,
         borderBottom: "0",
         marginBottom: "0",
         position: "fixed",
-
+        boxShadow:
+            "0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2)",
         paddingTop: "10px",
         zIndex: "1029",
-        color: "#555555",
+        color: "#ffffff",
         border: "0",
-        borderRadius: "3px",
+
         padding: "10px 0",
         transition: "all 150ms ease 0s",
         minHeight: "50px",
         display: "block",
-        [theme.breakpoints.up("md")]: {
+        [theme.breakpoints.down("sm")]: {
             backgroundColor: theme.palette.primary.A400,
-        },
-        [theme.breakpoints.up("sm")]: {
-            backgroundColor: theme.palette.primary.A700,
         },
     },
     appNormal: {
-        width: 'calc(100% - 260px)',
+        width: `calc(100% - ${drawerWidth}px)`,
     },
     hidden: {
         [theme.breakpoints.down("md")]: {
@@ -61,34 +59,6 @@ const headerStyle = theme => ({
             background: "transparent"
         }
     },
-    appResponsive: {
-        top: "8px"
-    },
-    primary: {
-        backgroundColor: primaryColor,
-        color: "#FFFFFF",
-        ...defaultBoxShadow
-    },
-    info: {
-        backgroundColor: infoColor,
-        color: "#FFFFFF",
-        ...defaultBoxShadow
-    },
-    success: {
-        backgroundColor: successColor,
-        color: "#FFFFFF",
-        ...defaultBoxShadow
-    },
-    warning: {
-        backgroundColor: warningColor,
-        color: "#FFFFFF",
-        ...defaultBoxShadow
-    },
-    danger: {
-        backgroundColor: dangerColor,
-        color: "#FFFFFF",
-        ...defaultBoxShadow
-    }
 });
 
 export default headerStyle;

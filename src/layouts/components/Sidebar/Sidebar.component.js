@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import {NavLink, Route, Switch} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import Drawer from "@material-ui/core/Drawer";
@@ -12,24 +12,23 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
 import Collapse from '@material-ui/core/Collapse';
+import Divider from '@material-ui/core/Divider';
 
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
 // core components
 import sidebarStyle from "./Sidebar.style.js";
-import { connect } from "react-redux";
-import Session from "../../../bundles/user/Session/Session";
-import {authenticateFailed, authenticateRequest, authenticateSuccess} from "../../../bundles/user/Login/Login.actions";
-import {activateLoader, disableLoader} from "../../../bundles/common/Loader/Loader.container";
-import {loginQuery} from "../../../bundles/user/Login/Login.service";
 
 const Sidebar = ({ logo, collapseOpen, handleModuleClick, ...props }) => {
+    if (collapseOpen == undefined) {
+        collapseOpen = {};
+    }
+
     // verifies if routeName is the one active (in browser input)
     function activeRoute(routeName) {
         return props.location.pathname.indexOf(routeName) > -1 ? true : false;
     }
-
 
     const { classes, color, image, routes } = props;
     var links = (
@@ -38,16 +37,14 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, ...props }) => {
                 const whiteFontClasses = classNames({
                     [" " + classes.whiteFont]: activeRoute(prop.path)
                 });
-                let buttons = [];
 
                 /**
                  * Module
                  */
                 if (prop.children !== undefined) {
-
                     let buttons = prop.children.map((childrenProp, childrenKey) => {
                         return (
-                            <ListItem button className={(classes.itemLink + classes.nested)} key={childrenKey}>
+                            <ListItem button className={classes.itemLink + " " + classes.nested} key={childrenKey}>
                                 <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
                                     <Icon>{childrenProp.icon}</Icon>
                                 </ListItemIcon>
@@ -60,21 +57,26 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, ...props }) => {
                         )
                     });
 
-                    // {buttons}
-                    //
-                    //onClick={this.handleClick}
                     return (
-                        <div key={prop.key}>
-                            <ListItem button onClick={handleModuleClick(prop.key)}>
-                                <ListItemIcon>
-                                    <Icon>Home</Icon>
+                        <div key={key} className={classes.item}>
+                            <ListItem button onClick={() => handleModuleClick(key)} className={classes.itemLink}>
+                                <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
+                                    <Icon>home</Icon>
                                 </ListItemIcon>
-                                <ListItemText inset primary="Inbox" />
-                                {collapseOpen[prop.key] ? <ExpandMore/> : <ExpandLess/>}
-                            </ListItem>
-                            <Collapse in={collapseOpen[prop.key]} timeout="auto" unmountOnExit >
-                                <List component="div" disablePadding>
+                                <ListItemText primary="Inboxxx" disableTypography={true} className={classes.itemText + whiteFontClasses}/>
 
+                                <Hidden mdUp implementation="css">
+                                    {collapseOpen[key] ?
+                                        <ExpandMore className={classes.expandableIcon} />
+                                        :
+                                        <ExpandLess className={classes.expandableIcon} />
+                                    }
+                                </Hidden>
+
+                            </ListItem>
+                            <Collapse in={collapseOpen[key]} timeout="auto" unmountOnExit >
+                                <List component="div" disablePadding>
+                                    {buttons}
                                 </List>
                             </Collapse>
                         </div>
@@ -106,13 +108,12 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, ...props }) => {
         </List>
     );
     var brand = (
-        <div className={classes.logo}>
-            <NavLink to='/dashboard' className={classes.logoLink}>
-                <div className={classes.logoImage}>
-                    <img src={logo} alt="logo" className={classes.img} />
-                </div>
-                oilfieldOS
-            </NavLink>
+        <div>
+            <Hidden smDown implementation="css">
+                <NavLink to='/dashboard'>
+                    <img src={logo} alt="logo" className={classes.logoImage}/>
+                </NavLink>
+            </Hidden>
         </div>
     );
     return (
@@ -152,6 +153,7 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, ...props }) => {
                     }}
                 >
                     {brand}
+                    <Divider />
                     <div className={classes.sidebarWrapper}>{links}</div>
                     {image !== undefined ? (
                         <div
@@ -165,20 +167,8 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, ...props }) => {
     );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-    logo: Session.getCurrentCompany() ? Session.getCurrentCompany().logo : '',
-    collapseOpen: []
-});
-
-const handleModuleClick = (dispatch) => ({
-
-    toggleCollapse: (collapseKey) => {
-
-    }
-});
-
 Sidebar.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default connect( mapStateToProps, handleModuleClick )(withStyles(sidebarStyle)(Sidebar));
+export default withStyles(sidebarStyle)(Sidebar);

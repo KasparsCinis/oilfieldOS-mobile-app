@@ -21,7 +21,7 @@ class HeaderContainer extends React.PureComponent {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('scroll', this.handleScroll, true);
     }
 
     handleScroll(event) {

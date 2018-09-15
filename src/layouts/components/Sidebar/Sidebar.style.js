@@ -1,5 +1,6 @@
 import {
     drawerWidth,
+    drawerWidthMobile,
     transition,
     boxShadow,
     defaultFont,
@@ -27,7 +28,7 @@ const sidebarStyle = theme => ({
             height: "100%"
         },
         [theme.breakpoints.down("sm")]: {
-            width: drawerWidth,
+            width: drawerWidthMobile,
             ...boxShadow,
             position: "fixed",
             display: "block",
@@ -42,47 +43,19 @@ const sidebarStyle = theme => ({
             textAlign: "left",
             paddingRight: "0px",
             paddingLeft: "0",
-            transform: `translate3d(${drawerWidth}px, 0, 0)`,
+            transform: `translate3d(${drawerWidthMobile}px, 0, 0)`,
             ...transition
         },
         backgroundColor: theme.palette.primary.A400,
     },
-    logo: {
-        position: "relative",
-        padding: "15px 15px",
-        zIndex: "4",
-        "&:after": {
-            content: '""',
-            position: "absolute",
-            bottom: "0",
-
-            height: "1px",
-            right: "15px",
-            width: "calc(100% - 30px)",
-            backgroundColor: "rgba(180, 180, 180, 0.3)"
-        }
-    },
-    logoLink: {
-        ...defaultFont,
-        textTransform: "uppercase",
-        padding: "5px 0",
-        display: "block",
-        fontSize: "18px",
-        textAlign: "left",
-        fontWeight: "400",
-        lineHeight: "30px",
-        textDecoration: "none",
-        backgroundColor: "transparent",
-        "&,&:hover": {
-            color: "#FFFFFF"
-        }
-    },
     logoImage: {
-        width: "30px",
+        maxWidth: "60px",
         display: "inline-block",
-        maxHeight: "30px",
-        marginLeft: "10px",
-        marginRight: "15px"
+        maxHeight: "60px",
+        marginLeft: "5px",
+        marginRight: "5px",
+        marginTop: "5px",
+        float: "left"
     },
     img: {
         width: "35px",
@@ -134,10 +107,15 @@ const sidebarStyle = theme => ({
         transition: "all 300ms linear",
         borderRadius: "3px",
         position: "relative",
-        display: "block",
+        display: "flex",
         padding: "10px 15px",
         backgroundColor: "transparent",
-        ...defaultFont
+        ...defaultFont,
+
+        [theme.breakpoints.up("md")]: {
+            display: "block",
+            padding: "5px 5px",
+        }
     },
     itemIcon: {
         width: "24px",
@@ -148,76 +126,48 @@ const sidebarStyle = theme => ({
         marginRight: "15px",
         textAlign: "center",
         verticalAlign: "middle",
-        color: "rgba(255, 255, 255, 0.8)"
+        color: "rgba(255, 255, 255, 0.8)",
+
+        [theme.breakpoints.up("md")]: {
+            width: "100%",
+            height: "25px"
+        }
     },
     nested: {
         paddingLeft: theme.spacing.unit * 4,
+
+        [theme.breakpoints.up("md")]: {
+            paddingLeft: "0px",
+        }
     },
     itemText: {
         ...defaultFont,
         margin: "0",
         lineHeight: "30px",
         fontSize: "14px",
-        color: "#FFFFFF"
+        color: "#FFFFFF",
+
+        [theme.breakpoints.up("md")]: {
+            wordWrap: "break-word",
+            padding: "0px 2px",
+            textAlign: "center",
+            fontSize: "10px"
+        }
     },
     whiteFont: {
         color: "#FFFFFF"
-    },
-    purple: {
-        backgroundColor: primaryColor,
-        ...primaryBoxShadow,
-        "&:hover": {
-            backgroundColor: primaryColor,
-            ...primaryBoxShadow
-        }
-    },
-    blue: {
-        backgroundColor: infoColor,
-        boxShadow:
-            "0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)",
-        "&:hover": {
-            backgroundColor: infoColor,
-            boxShadow:
-                "0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)"
-        }
-    },
-    green: {
-        backgroundColor: successColor,
-        boxShadow:
-            "0 12px 20px -10px rgba(76,175,80,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(76,175,80,.2)",
-        "&:hover": {
-            backgroundColor: successColor,
-            boxShadow:
-                "0 12px 20px -10px rgba(76,175,80,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(76,175,80,.2)"
-        }
-    },
-    orange: {
-        backgroundColor: warningColor,
-        boxShadow:
-            "0 12px 20px -10px rgba(255,152,0,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(255,152,0,.2)",
-        "&:hover": {
-            backgroundColor: warningColor,
-            boxShadow:
-                "0 12px 20px -10px rgba(255,152,0,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(255,152,0,.2)"
-        }
-    },
-    red: {
-        backgroundColor: dangerColor,
-        boxShadow:
-            "0 12px 20px -10px rgba(244,67,54,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(244,67,54,.2)",
-        "&:hover": {
-            backgroundColor: dangerColor,
-            boxShadow:
-                "0 12px 20px -10px rgba(244,67,54,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(244,67,54,.2)"
-        }
     },
     sidebarWrapper: {
         position: "relative",
         height: "calc(100vh - 75px)",
         overflow: "auto",
-        width: "260px",
+        width: `${drawerWidthMobile}px`,
         zIndex: "4",
-        overflowScrolling: "touch"
+        overflowScrolling: "touch",
+
+        [theme.breakpoints.up("md")]: {
+            width: `${drawerWidth}px`,
+        }
     },
     activePro: {
         [theme.breakpoints.up("md")]: {
@@ -225,6 +175,9 @@ const sidebarStyle = theme => ({
             width: "100%",
             bottom: "13px"
         }
+    },
+    expandableIcon: {
+        float: "right"
     }
 });
 

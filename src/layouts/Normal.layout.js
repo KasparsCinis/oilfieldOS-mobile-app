@@ -5,7 +5,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 import HeaderContainer from "./components/Header/Header.container";
 import Footer from "./components/Footer/Footer.component";
-import Sidebar from "./components/Sidebar/Sidebar.component";
+import Sidebar from "./components/Sidebar/Sidebar.container";
 
 import NotFoundContainer from '../bundles/common/NotFound/NotFound';
 import DashboardContainer from '../bundles/user/Dashboard/Dashboard.container';
