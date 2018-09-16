@@ -14,7 +14,7 @@ const initialState = {
         email:'',
         activeCompany: null,
         companies: [],
-        permissions: [],
+        permissions: {},
     }
 };
 

@@ -43,9 +43,9 @@ export default class Session {
                     .then(response => response.json())
                     .then(response => {
                         userData.name = userData.firstName + ' ' + userData.lastName;
-                        userData.permissions = response.permissions;
-                        userData.activeWell  = response.activeWell;
-                        userData.wells       = response.wells;
+                        userData.permissions = response.userData.permissions;
+                        userData.activeWell  = response.userData.activeWell;
+                        userData.wells       = response.userData.wells;
 
                         store.dispatch(sessionSuccess(userData));
 
@@ -72,6 +72,10 @@ export default class Session {
      * @returns {*}
      */
     static getCurrentUser() {
+        if (store === undefined) {
+            return null;
+        }
+
         if (store.getState().session.isAuthorized) {
             return store.getState().session.user;
         }
@@ -114,13 +118,14 @@ export default class Session {
         let user = this.getCurrentUser();
         let company = this.getCurrentCompany();
 
-        if (user == null || company == null) {
-            return null;
+        if (user === undefined || user == null || company == null) {
+            return false;
         }
 
-        if (company.role === 'A' || company.role === 'S') {
+        if (company.account === 'A' || company.account === 'S') {
             return true;
         }
+
 
         return Boolean(user.permissions[permission]);
     }
@@ -129,7 +134,15 @@ export default class Session {
      * @todo
      */
     static getCurrentDomain() {
+        return 'dev.oilfieldos.local';
+    }
 
+    /**
+     * Returns authentication token for services
+     * @returns {string | null}
+     */
+    static getToken() {
+        return localStorage.getItem('token');
     }
 
     /**

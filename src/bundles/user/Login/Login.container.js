@@ -67,7 +67,7 @@ const loginSubmit = (dispatch) => ({
                     disableLoader();
 
                     dispatch(authenticateSuccess(response.token));
-                    console.log('?????????????????', response.status);
+
                     Session.fetchUserDataIfTokenExists(dispatch);
                 } else {
                     errorMessage = "Something went wrong";

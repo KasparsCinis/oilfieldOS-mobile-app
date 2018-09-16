@@ -1,6 +1,7 @@
 import React from "react";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 import HeaderContainer from "./components/Header/Header.container";
@@ -11,6 +12,9 @@ import NotFoundContainer from '../bundles/common/NotFound/NotFound';
 import DashboardContainer from '../bundles/user/Dashboard/Dashboard.container';
 
 import Component from "../components/component";
+import {drawerWidth} from "./components/dashboard.style";
+import Session from "../bundles/user/Session/Session";
+import AnalyticsContainer from "../bundles/project/analytics/Analytics.container";
 
 const layoutStyles = theme => ({
     wrapper: {
@@ -20,7 +24,7 @@ const layoutStyles = theme => ({
     },
     mainPanel: {
         [theme.breakpoints.up("md")]: {
-            width: `calc(100% - 260px)`
+            width: `calc(100% - ${drawerWidth}px)`
         },
         overflow: "auto",
         position: "relative",
@@ -44,7 +48,10 @@ const layoutStyles = theme => ({
     },
     map: {
         marginTop: "70px",
-        height: "100%"
+        height: "100%",
+        padding: "20px"
+
+
     }
 });
 
@@ -53,15 +60,18 @@ const dashboardRoutes = [
         path: "/dashboard",
         sidebarName: "Dashboard",
         icon: 'home',
+        visible: true,
         component: DashboardContainer
     },
     {
         path: "/analytics",
         sidebarName: "Analytics",
         icon: 'timeline',
-        component: NotFoundContainer
+        permission: 'is-project-ownerr',
+        visible: false,
+        component: AnalyticsContainer
     },
-    {
+   /* {
         sidebarName: "Analytics",
         icon: 'timeline',
         children: [
@@ -78,7 +88,7 @@ const dashboardRoutes = [
                 component: DashboardContainer
             },
         ]
-    },
+    },*/
 ];
 
 const switchRoutes = (
@@ -131,11 +141,23 @@ class NormalLayout extends Component {
     }
 
     render() {
-        const { classes, ...rest } = this.props;
+        const { user, classes, ...rest } = this.props;
+
+        /**
+         * Go over every sidebar button and check if the user has permission for it
+         */
+        let routesWithPermissions = dashboardRoutes;
+
+        routesWithPermissions.forEach(function(route) {
+            if (route.permission !== undefined) {
+                route.visible = Session.hasPermission(route.permission);
+            }
+        });
+
         return (
             <div className={classes.wrapper}>
                 <Sidebar
-                    routes={dashboardRoutes}
+                    routes={routesWithPermissions}
                     handleDrawerToggle={this.handleDrawerToggle}
                     open={this.state.mobileOpen}
                     color="blue"
@@ -157,8 +179,13 @@ class NormalLayout extends Component {
     }
 }
 
+const mapStateToProps = (state, ownProps) => ({
+    user: state.session.user.email,
+});
+
+
 NormalLayout.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(layoutStyles)(NormalLayout);
+export default connect( mapStateToProps )(withStyles(layoutStyles)(NormalLayout));

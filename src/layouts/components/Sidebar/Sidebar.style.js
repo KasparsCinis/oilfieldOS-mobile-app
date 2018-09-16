@@ -136,7 +136,7 @@ const sidebarStyle = theme => ({
     nested: {
         paddingLeft: theme.spacing.unit * 4,
         backgroundColor: theme.palette.primary.A700,
-        
+
         [theme.breakpoints.up("md")]: {
             paddingLeft: "0px",
         }

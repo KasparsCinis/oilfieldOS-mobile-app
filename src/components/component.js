@@ -7,6 +7,7 @@ class Component extends reduxComponent {
     constructor(props) {
         super(props);
 
+
         /**
          * If the user hasn't logged in / or the logged in sate is 'broken' redirect the user to login page
          */
@@ -15,6 +16,13 @@ class Component extends reduxComponent {
         }
     }
 
+    /**
+     * @todo
+     * Check if user has given permission, or redirect to dashboard
+     */
+    validatePermission(permission) {
+
+    }
 
 }
 

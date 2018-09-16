@@ -81,6 +81,11 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                     );
 
                 } else {
+                    if (!prop.visible) {
+                        return '';
+                    }
+
+
                     return (
                         <NavLink
                             to={prop.path}
