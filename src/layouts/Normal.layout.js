@@ -48,10 +48,13 @@ const layoutStyles = theme => ({
     },
     map: {
         marginTop: "70px",
-        height: "100%",
-        padding: "20px"
+        minHeight: "100%",
+        padding: "10px",
+        backgroundColor: "#f8f8f8",
 
-
+        [theme.breakpoints.up("md")]: {
+            padding: "20px",
+        },
     }
 });
 

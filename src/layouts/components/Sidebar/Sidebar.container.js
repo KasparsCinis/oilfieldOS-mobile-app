@@ -17,6 +17,7 @@ class SidebarContainer extends React.Component {
 
         this.handleModuleClick = this.handleModuleClick.bind(this);
         this.handleMobileTabToggle = this.handleMobileTabToggle.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     handleModuleClick(collapseKey) {
@@ -33,6 +34,10 @@ class SidebarContainer extends React.Component {
         })
     }
 
+    handleLogout() {
+        Session.logout();
+    }
+
     render() {
         const { logo, ...rest } = this.props;
 
@@ -43,6 +48,7 @@ class SidebarContainer extends React.Component {
                 openMobileProfileTab={this.state.openMobileProfileTab}
                 handleModuleClick={this.handleModuleClick}
                 handleMobileTabToggle={this.handleMobileTabToggle}
+                handleLogout={this.handleLogout}
                 {...rest}
             >
             </Sidebar>

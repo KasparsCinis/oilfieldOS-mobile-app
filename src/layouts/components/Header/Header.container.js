@@ -36,7 +36,6 @@ class HeaderContainer extends React.PureComponent {
     };
 
     handleLogout = () => {
-
         this.setState({ profileAnchorEl: null });
 
         Session.logout();

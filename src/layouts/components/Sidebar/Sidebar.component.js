@@ -18,11 +18,12 @@ import Typography from "@material-ui/core/Typography";
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import ExitToApp from '@material-ui/icons/ExitToApp';
 
 // core components
 import sidebarStyle from "./Sidebar.style.js";
 
-const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle, name, email, openMobileProfileTab, ...props }) => {
+const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle, handleLogout, name, email, openMobileProfileTab, ...props }) => {
     // verifies if routeName is the one active (in browser input)
     function activeRoute(routeName) {
         return props.location.pathname.indexOf(routeName) > -1 ? true : false;
@@ -160,7 +161,16 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                     </div>
 
                     <div className={openMobileProfileTab ? classes.sidebarWrapper : classes.hidden}>
-
+                        <ListItem button className={classes.itemLink} onClick={handleLogout}>
+                            <ListItemIcon className={classes.itemIcon}>
+                                <ExitToApp />
+                            </ListItemIcon>
+                            <ListItemText
+                                primary='Logout'
+                                className={classes.itemText}
+                                disableTypography={true}
+                            />
+                        </ListItem>
                     </div>
                     {image !== undefined ? (
                         <div
