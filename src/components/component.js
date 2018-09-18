@@ -17,11 +17,12 @@ class Component extends reduxComponent {
     }
 
     /**
-     * @todo
      * Check if user has given permission, or redirect to dashboard
      */
     validatePermission(permission) {
-
+        if (!Session.hasPermission(permission)) {
+            history.push('/dashboard');
+        }
     }
 
 }

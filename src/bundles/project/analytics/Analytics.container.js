@@ -2,9 +2,18 @@ import React from 'react';
 import Component from "../../../components/component";
 import AnalyticsComponent from "./Analytics.component";
 import {
-    fetchDepthChartData, fetchIltCategoryChartData, fetchNptCategoryChartData, fetchNptSpreadChartData,
+    fetchActionsChartData,
+    fetchCostDailyChartData,
+    fetchCostPhaseChartData,
+    fetchCostVendorChartData,
+    fetchCostWeeklyChartData,
+    fetchDepthChartData,
+    fetchIltCategoryChartData,
+    fetchNptCategoryChartData,
+    fetchNptSpreadChartData,
     fetchProductiveNptChartData,
-    fetchProductiveNptRatioChartData, fetchRopChartData,
+    fetchProductiveNptRatioChartData,
+    fetchRopChartData,
     fetchTimeChartData
 } from "./Analytics.service";
 
@@ -15,6 +24,8 @@ class AnalyticsContainer extends Component {
         super(props);
 
         this.state = {
+            activeTab: 0,
+            loadedTabs: {},
             timeChart: [],
             depthChart: [],
             productiveNptChart: [],
@@ -22,92 +33,181 @@ class AnalyticsContainer extends Component {
             nptSpreadChart: [],
             ropChart: [],
             nptCategoryChart: [],
-            iltCategoryChart: []
+            iltCategoryChart: [],
+
+            dailyCostChart: [],
+            weeklyCostChart: [],
+            vendorCostChart: [],
+            phaseCostChart: [],
+
+            actionsChart: []
         };
 
-        this.validatePermission('');
+        this.validatePermission('operations-view-analytics');
+
+        this.changeTab = this.changeTab.bind(this);
     }
 
     componentWillMount() {
-        this.fetchData();
+        this.fetchData(0);
     }
 
-    fetchData() {
-        fetchTimeChartData()
-            .then(response => response.json())
-            .then(response => {
-                this.setState(prevState => ({
-                    ...prevState,
-                    timeChart: response
-                }));
-            });
+    fetchData(tab) {
+        /**
+         * Operations charts
+         */
+        if (tab === 0 && !this.state.loadedTabs[0]) {
+            fetchTimeChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        timeChart: response
+                    }));
+                });
 
-        fetchDepthChartData()
-            .then(response => response.json())
-            .then(response => {
-                this.setState(prevState => ({
-                    ...prevState,
-                    depthChart: response
-                }));
-            });
+            fetchDepthChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        depthChart: response
+                    }));
+                });
 
-        fetchProductiveNptChartData()
-            .then(response => response.json())
-            .then(response => {
-                this.setState(prevState => ({
-                    ...prevState,
-                    productiveNptChart: response
-                }));
-            });
+            fetchProductiveNptChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        productiveNptChart: response
+                    }));
+                });
 
-        fetchProductiveNptRatioChartData()
-            .then(response => response.json())
-            .then(response => {
-                this.setState(prevState => ({
-                    ...prevState,
-                    productiveNptRatioChart: response
-                }));
-            });
+            fetchProductiveNptRatioChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        productiveNptRatioChart: response
+                    }));
+                });
 
-        fetchNptSpreadChartData()
-            .then(response => response.json())
-            .then(response => {
-                this.setState(prevState => ({
-                    ...prevState,
-                    nptSpreadChart: response
-                }));
-            });
+            fetchNptSpreadChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        nptSpreadChart: response
+                    }));
+                });
 
-        fetchRopChartData()
-            .then(response => response.json())
-            .then(response => {
-                this.setState(prevState => ({
-                    ...prevState,
-                    ropChart: response
-                }));
-            });
+            fetchRopChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        ropChart: response
+                    }));
+                });
 
-        fetchNptCategoryChartData()
-            .then(response => response.json())
-            .then(response => {
-                this.setState(prevState => ({
-                    ...prevState,
-                    nptCategoryChart: response
-                }));
-            });
+            fetchNptCategoryChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        nptCategoryChart: response
+                    }));
+                });
 
-        fetchIltCategoryChartData()
-            .then(response => response.json())
-            .then(response => {
-                this.setState(prevState => ({
-                    ...prevState,
-                    iltCategoryChart: response
-                }));
-            });
+            fetchIltCategoryChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        iltCategoryChart: response
+                    }));
+                });
+        }
+
+        /**
+         * Costs charts
+         */
+        if (tab === 1 && !this.state.loadedTabs[1]) {
+            fetchCostDailyChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        dailyCostChart: response
+                    }));
+                });
+
+            fetchCostWeeklyChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        weeklyCostChart: response
+                    }));
+                });
+
+            fetchCostVendorChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        vendorCostChart: response
+                    }));
+                });
+
+            fetchCostPhaseChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        phaseCostChart: response
+                    }));
+                });
+        }
+
+        /**
+         * Actions charts
+         */
+        if (tab === 2 && !this.state.loadedTabs[2]) {
+            fetchActionsChartData()
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        actionsChart: response
+                    }));
+                });
+        }
+
+        let loadedTabs = this.state.loadedTabs;
+        loadedTabs[tab] = true;
+
+        this.setState(prevState => ({
+            ...prevState,
+            loadedTabs: loadedTabs
+        }));
+    }
+
+    changeTab(event, value) {
+        this.setState(prevState => ({
+            ...prevState,
+            activeTab: value
+        }));
+
+        this.fetchData(value);
+
+        return true;
     }
 
     render() {
         return <AnalyticsComponent
+
             timeChart={this.state.timeChart}
             depthChart={this.state.depthChart}
             productiveNptChart={this.state.productiveNptChart}
@@ -116,6 +216,16 @@ class AnalyticsContainer extends Component {
             ropChart={this.state.ropChart}
             nptCategoryChart={this.state.nptCategoryChart}
             iltCategoryChart={this.state.iltCategoryChart}
+
+            dailyCostChart={this.state.dailyCostChart}
+            weeklyCostChart={this.state.weeklyCostChart}
+            vendorCostChart={this.state.vendorCostChart}
+            phaseCostChart={this.state.phaseCostChart}
+
+            actionsChart={this.state.actionsChart}
+
+            activeTab={this.state.activeTab}
+            changeTab={this.changeTab}
         />
     }
 }

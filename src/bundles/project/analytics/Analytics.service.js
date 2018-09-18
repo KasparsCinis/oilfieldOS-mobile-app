@@ -81,3 +81,55 @@ export const fetchIltCategoryChartData = () => {
         })
     });
 };
+
+export const fetchCostDailyChartData = () => {
+    return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/analytics/costs-daily-chart`, {
+        method: 'GET',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Session.getToken()}`,
+        })
+    });
+};
+export const fetchCostWeeklyChartData = () => {
+    return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/analytics/costs-weekly-chart`, {
+        method: 'GET',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Session.getToken()}`,
+        })
+    });
+};
+export const fetchCostVendorChartData = () => {
+    return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/analytics/costs-vendor-chart`, {
+        method: 'GET',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Session.getToken()}`,
+        })
+    });
+};
+export const fetchCostPhaseChartData = () => {
+    return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/analytics/costs-phase-chart`, {
+        method: 'GET',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Session.getToken()}`,
+        })
+    });
+};
+
+export const fetchActionsChartData = () => {
+    return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/analytics/actions-chart`, {
+        method: 'GET',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Session.getToken()}`,
+        })
+    });
+};
