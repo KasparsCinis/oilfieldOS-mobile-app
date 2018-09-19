@@ -10,9 +10,6 @@ export const loginQuery = (username, password) => {
         body: JSON.stringify({
             username: username,
             password: password
-        })/**
- *
- * @type {{type: string}}
- */
+        })
     });
 };

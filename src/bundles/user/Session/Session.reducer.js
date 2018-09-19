@@ -14,6 +14,7 @@ const initialState = {
         email:'',
         activeCompany: null,
         companies: [],
+        projects: {},
         permissions: {},
     }
 };

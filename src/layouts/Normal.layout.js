@@ -166,7 +166,7 @@ class NormalLayout extends Component {
                     color="blue"
                     {...rest}
                 />
-                <div className={classes.mainPanel} ref="mainPanel">
+                <div id="main-layout-panel" className={classes.mainPanel} ref="mainPanel">
                     <HeaderContainer
                         handleDrawerToggle={this.handleDrawerToggle}
                         isMobile={this.state.isMobile}

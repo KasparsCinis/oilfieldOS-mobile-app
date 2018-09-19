@@ -1,5 +1,5 @@
 import history from "../../../components/history";
-import {fetchUserData, fetchUserCompanyData} from "./Session.service";
+import {fetchUserData, fetchUserCompanyData, updateUserActiveProject} from "./Session.service";
 import {
     sessionFailed,
     sessionLoading,
@@ -43,9 +43,9 @@ export default class Session {
                     .then(response => response.json())
                     .then(response => {
                         userData.name = userData.firstName + ' ' + userData.lastName;
-                        userData.permissions = response.userData.permissions;
-                        userData.activeWell  = response.userData.activeWell;
-                        userData.wells       = response.userData.wells;
+                        userData.permissions = response.permissions;
+                        userData.activeWell  = response.activeWell;
+                        userData.projects       = response.projects;
 
                         store.dispatch(sessionSuccess(userData));
 
@@ -54,7 +54,7 @@ export default class Session {
                     .catch(error => {
                         store.dispatch(sessionFailed());
 
-                        console.error('Error:', error)
+                        console.error('Error:', error);
                     });
 
             })
@@ -84,16 +84,51 @@ export default class Session {
     }
 
     /**
-     * @todo
-     * @returns {null}
+     *
+     * @returns {*}
      */
-    static getCurrentProject() {
+    static getActiveProject() {
         let user = this.getCurrentUser();
 
+        /**
+         * Return default empty project
+         */
         if (user == null) {
-            return null;
+            return {
+                id: null,
+                name: ''
+            };
         }
 
+        return user.projects[user.activeWell];
+    }
+
+    static setActiveProject(project) {
+        let user = this.getCurrentUser();
+
+        /**
+         * @todo
+         * Check if the passed project is actually valid / user has access to it
+         */
+
+
+        updateUserActiveProject(project)
+            .then(response => response.json())
+            .then(response => {
+
+                user.permission = response.permissions;
+                user.activeWell = project;
+
+                store.dispatch(sessionSuccess(user));
+
+                /**
+                 * Redirect to dashboard because any loaded components need reloading after a project is changed
+                 */
+                history.push('/dashboard');
+            })
+            .catch(error => {
+                console.error('Error:', error)
+            });
     }
 
     /**
