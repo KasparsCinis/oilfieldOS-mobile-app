@@ -28,7 +28,7 @@ const styles = theme => ({
     },
 });
 
-const AnalyticsComponent = ({ classes, activeTab, changeTab, timeChart, depthChart, productiveNptChart, productiveNptRatioChart, nptSpreadChart,
+const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeChart, depthChart, productiveNptChart, productiveNptRatioChart, nptSpreadChart,
                             ropChart, nptCategoryChart, iltCategoryChart, dailyCostChart, weeklyCostChart, predictedCostChart, vendorCostChart,
                             phaseCostChart, actionsChart}) => {
 
@@ -46,9 +46,9 @@ const AnalyticsComponent = ({ classes, activeTab, changeTab, timeChart, depthCha
                         textColor="primary"
                         centered
                     >
-                        <Tab label="Operations" icon={<ShowChart />}/>
-                        <Tab label="Costs" icon={<AttachMoney />}/>
-                        <Tab label="Actions" icon={<Check />}/>
+                        {visibleTabs[0] && <Tab label="Operations" icon={<ShowChart />}/> }
+                        {visibleTabs[1] && <Tab label="Costs" icon={<AttachMoney />}/> }
+                        {visibleTabs[2] && <Tab label="Actions" icon={<Check />}/> }
                     </Tabs>
                 </Paper>
                 <br />
@@ -59,9 +59,9 @@ const AnalyticsComponent = ({ classes, activeTab, changeTab, timeChart, depthCha
                     onChange={changeTab}
                     showLabels
                 >
-                    <BottomNavigationAction label="Operations" icon={<ShowChart />} />
-                    <BottomNavigationAction label="Costs" icon={<AttachMoney />} />
-                    <BottomNavigationAction label="Actions" icon={<Check />} />
+                    {visibleTabs[0] && <BottomNavigationAction label="Operations" icon={<ShowChart />} /> }
+                    {visibleTabs[1] && <BottomNavigationAction label="Costs" icon={<AttachMoney />} /> }
+                    {visibleTabs[2] && <BottomNavigationAction label="Actions" icon={<Check />} /> }
                 </BottomNavigation>
             </Hidden>
 

@@ -16,6 +16,7 @@ import {
     fetchRopChartData,
     fetchTimeChartData
 } from "./Analytics.service";
+import Session from "../../user/Session/Session";
 
 
 class AnalyticsContainer extends Component {
@@ -26,6 +27,7 @@ class AnalyticsContainer extends Component {
         this.state = {
             activeTab: 0,
             loadedTabs: {},
+            visibleTabs: {},
             timeChart: [],
             depthChart: [],
             productiveNptChart: [],
@@ -50,6 +52,22 @@ class AnalyticsContainer extends Component {
 
     componentWillMount() {
         this.fetchData(0);
+
+        /**
+         * Each tab has a different permission
+         */
+        let visibleOperations = Session.hasPermission('operations-view-analytics-operations');
+        let visibleCosts = Session.hasPermission('operations-view-analytics-costs');
+        let visibleActions = Session.hasPermission('operations-view-analytics-actions');
+
+        this.setState(prevState => ({
+            ...prevState,
+            visibleTabs: {
+                0: visibleOperations,
+                1: visibleCosts,
+                2: visibleActions
+            }
+        }));
     }
 
     fetchData(tab) {
@@ -225,6 +243,7 @@ class AnalyticsContainer extends Component {
             actionsChart={this.state.actionsChart}
 
             activeTab={this.state.activeTab}
+            visibleTabs={this.state.visibleTabs}
             changeTab={this.changeTab}
         />
     }

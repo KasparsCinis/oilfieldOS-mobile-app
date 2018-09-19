@@ -70,7 +70,7 @@ const dashboardRoutes = [
         path: "/analytics",
         sidebarName: "Analytics",
         icon: 'timeline',
-        permission: 'is-project-ownerr',
+        permission: 'operations-view-analytics',
         visible: false,
         component: AnalyticsContainer
     },
