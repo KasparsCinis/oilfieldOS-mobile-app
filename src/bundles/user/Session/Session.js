@@ -166,10 +166,16 @@ export default class Session {
     }
 
     /**
-     * @todo
+     * @returns {string}
      */
     static getCurrentDomain() {
-        return 'dev.oilfieldos.local';
+        let company = this.getCurrentCompany();
+
+        if (company == null) {
+            return '';
+        }
+
+        return String(company.url);
     }
 
     /**
