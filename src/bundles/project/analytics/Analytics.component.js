@@ -8,6 +8,7 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Hidden from "@material-ui/core/Hidden";
 import withStyles from '@material-ui/core/styles/withStyles';
+import PlotlyChart from '../../../components/plotlyChart'
 
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
@@ -74,7 +75,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                 Time Chart
                             </Typography>
                             <hr/>
-                            <Plot
+                            <PlotlyChart
                                 data={timeChart}
                                 layout={{
                                     xaxis: {
