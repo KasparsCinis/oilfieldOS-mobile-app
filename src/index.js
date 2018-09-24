@@ -5,7 +5,7 @@ import {createStore} from "redux";
 import rootReducer from "./bundles/rootReducer";
 import Session from './bundles/user/Session/Session';
 
-const store = createStore(rootReducer);
+export const store = createStore(rootReducer);
 
 Session.connectStore(store);
 Session.fetchUserDataIfTokenExists(store);

@@ -6,6 +6,7 @@ import {
     sessionSuccess,
     sessionLogout
 } from "./Session.actions";
+import {activateLoader, disableLoader} from "../../common/Loader/Loader.container";
 
 let store;
 
@@ -24,6 +25,8 @@ export default class Session {
         if (token == null || token === undefined) {
             return false;
         }
+
+        activateLoader();
 
         /**
          * Fetch user data
@@ -49,10 +52,14 @@ export default class Session {
 
                         store.dispatch(sessionSuccess(userData));
 
+                        disableLoader();
+                        
                         history.push('/dashboard');
                     })
                     .catch(error => {
                         store.dispatch(sessionFailed());
+
+                        disableLoader();
 
                         console.error('Error:', error);
                     });
@@ -60,6 +67,8 @@ export default class Session {
             })
             .catch(error => {
                 store.dispatch(sessionFailed());
+
+                disableLoader();
 
                 console.error('Error:', error)
             });
