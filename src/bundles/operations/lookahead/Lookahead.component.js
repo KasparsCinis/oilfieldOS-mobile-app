@@ -17,16 +17,21 @@ import Tab from '@material-ui/core/Tab';
 import ShowChart from '@material-ui/icons/ShowChart';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 import Check from '@material-ui/icons/Check';
+import Gantt from "../../../components/gantt";
 
 const styles = theme => ({
 
 });
 
-const LookaheadComponent = ({ classes }) => {
+const LookaheadComponent = ({ classes, data, config }) => {
 
     return (
-        <div>
+        <div style={{height:"600px"}}>
             LOOKAHEAD
+            <Gantt
+                tasks={data}
+                config={config}
+            />
         </div>
     );
 

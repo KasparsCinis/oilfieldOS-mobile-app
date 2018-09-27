@@ -2,7 +2,7 @@ import { config } from '../../../config';
 import Session from "../../user/Session/Session";
 
 export const fetchGanttChartData = () => {
-    return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/`, {
+    return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/lookahead/gantt-data`, {
         method: 'GET',
         headers: new Headers({
             'Accept': 'application/json',
