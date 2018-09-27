@@ -12,7 +12,7 @@ import {
 
 const headerStyle = theme => ({
     appBar: {
-        backgroundColor: theme.palette.primary.A700,
+        backgroundColor: theme.palette.primary.A400,
         borderBottom: "0",
         marginBottom: "0",
         position: "fixed",
@@ -27,9 +27,7 @@ const headerStyle = theme => ({
         transition: "all 150ms ease 0s",
         minHeight: "50px",
         display: "block",
-        [theme.breakpoints.down("sm")]: {
-            backgroundColor: theme.palette.primary.A400,
-        },
+
     },
     appNormal: {
         width: `calc(100% - ${drawerWidth}px)`,

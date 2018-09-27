@@ -15,6 +15,7 @@ import Component from "../components/component";
 import {drawerWidth} from "./components/dashboard.style";
 import Session from "../bundles/user/Session/Session";
 import AnalyticsContainer from "../bundles/project/analytics/Analytics.container";
+import LookaheadContainer from "../bundles/operations/lookahead/Lookahead.container";
 
 const layoutStyles = theme => ({
     wrapper: {
@@ -50,7 +51,7 @@ const layoutStyles = theme => ({
         marginTop: "70px",
         minHeight: "100%",
         padding: "10px",
-        backgroundColor: "#f8f8f8",
+        backgroundColor: "#fafafa",
 
         [theme.breakpoints.up("md")]: {
             padding: "20px",
@@ -69,36 +70,31 @@ const dashboardRoutes = [
     {
         path: "/analytics",
         sidebarName: "Analytics",
-        icon: 'timeline',
+        icon: 'bar_chart',
         permission: 'operations-view-analytics',
         visible: false,
         component: AnalyticsContainer
     },
-   /* {
-        sidebarName: "Analytics",
-        icon: 'timeline',
+    {
+        sidebarName: "Operations",
+        icon: 'show_chart',
         children: [
             {
-                path: "/dashboard",
-                sidebarName: "Dashboard",
-                icon: 'home',
-                component: DashboardContainer
-            },
-            {
-                path: "/dashboard",
-                sidebarName: "Hello",
-                icon: 'home',
-                component: DashboardContainer
+                path: "/lookahead",
+                sidebarName: "Lookahead",
+                icon: 'compass_calibration',
+                permission: '...',
+                component: LookaheadContainer
             },
         ]
-    },*/
+    },
 ];
 
 const switchRoutes = (
     <Switch>
-        {dashboardRoutes.map((prop, key) => {
-            return <Route path={prop.path} component={prop.component} key={key} />;
-        })}
+        <Route path='/dashboard' component={DashboardContainer} key={1} />
+        <Route path='/analytics' component={AnalyticsContainer} key={2} />
+        <Route path='/lookahead' component={LookaheadContainer} key={3} />
     </Switch>
 );
 

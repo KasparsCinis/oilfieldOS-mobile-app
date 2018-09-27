@@ -29,12 +29,12 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
         return props.location.pathname.indexOf(routeName) > -1 ? true : false;
     }
 
-    const { classes, color, image, routes } = props;
+    const { classes, color, routes } = props;
     var links = (
-        <List className={classes.list}>
+        <List>
             {routes.map((prop, key) => {
                 const whiteFontClasses = classNames({
-                    [" " + classes.whiteFont]: activeRoute(prop.path)
+                    [" " + classes.active]: activeRoute(prop.path)
                 });
 
                 /**
@@ -43,26 +43,33 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                 if (prop.children !== undefined) {
                     let buttons = prop.children.map((childrenProp, childrenKey) => {
                         return (
-                            <ListItem button className={classes.itemLink + " " + classes.nested} key={childrenKey}>
-                                <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
-                                    <Icon>{childrenProp.icon}</Icon>
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={childrenProp.sidebarName}
-                                    className={classes.itemText + whiteFontClasses}
-                                    disableTypography={true}
-                                />
-                            </ListItem>
+                            <NavLink
+                                to={childrenProp.path}
+                                className={classes.item}
+                                activeClassName="active"
+                                key={childrenKey}
+                            >
+                                <ListItem button className={classes.itemLink + " " + classes.nested + whiteFontClasses}>
+                                    <ListItemIcon className={classes.itemIcon}>
+                                        <Icon>{childrenProp.icon}</Icon>
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={childrenProp.sidebarName}
+                                        className={classes.itemText}
+                                        disableTypography={true}
+                                    />
+                                </ListItem>
+                            </NavLink>
                         )
                     });
 
                     return (
                         <div key={key} className={classes.item}>
-                            <ListItem button onClick={() => handleModuleClick(key)} className={classes.itemLink}>
-                                <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
-                                    <Icon>home</Icon>
+                            <ListItem button onClick={() => handleModuleClick(key)} className={classes.itemLink + whiteFontClasses}>
+                                <ListItemIcon className={classes.itemIcon}>
+                                    <Icon>{prop.icon}</Icon>
                                 </ListItemIcon>
-                                <ListItemText primary="Inboxxx" disableTypography={true} className={classes.itemText + whiteFontClasses}/>
+                                <ListItemText primary={prop.sidebarName} disableTypography={true} className={classes.itemText}/>
 
                                 <Hidden mdUp implementation="css">
                                     {collapseOpen[key] ?
@@ -94,13 +101,13 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                             activeClassName="active"
                             key={key}
                         >
-                            <ListItem button className={classes.itemLink}>
-                                <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
+                            <ListItem button className={classes.itemLink + whiteFontClasses}>
+                                <ListItemIcon className={classes.itemIcon}>
                                     <Icon>{prop.icon}</Icon>
                                 </ListItemIcon>
                                 <ListItemText
                                     primary={prop.sidebarName}
-                                    className={classes.itemText + whiteFontClasses}
+                                    className={classes.itemText}
                                     disableTypography={true}
                                 />
                             </ListItem>
@@ -172,12 +179,6 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                             />
                         </ListItem>
                     </div>
-                    {image !== undefined ? (
-                        <div
-                            className={classes.background}
-                            style={{ backgroundImage: "url(" + image + ")" }}
-                        />
-                    ) : null}
                 </Drawer>
             </Hidden>
 
@@ -197,12 +198,6 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                     {brand}
                     <Divider />
                     <div className={classes.sidebarWrapper}>{links}</div>
-                    {image !== undefined ? (
-                        <div
-                            className={classes.background}
-                            style={{ backgroundImage: "url(" + image + ")" }}
-                        />
-                    ) : null}
                 </Drawer>
             </Hidden>
         </div>
