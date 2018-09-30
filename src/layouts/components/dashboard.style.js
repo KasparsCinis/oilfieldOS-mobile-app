@@ -1,4 +1,4 @@
-const drawerWidth = 260;
+const drawerWidth = 200;
 const drawerWidthMobile = 260;
 
 const transition = {

@@ -11,10 +11,9 @@ class Gantt extends Component {
     }
 
     componentDidMount() {
+        gantt.config.show_unscheduled = true;
+
         gantt.init(this.ganttContainer);
-
-
-        console.log(this.props.tasks);
     }
 
     componentWillUnmount() {
@@ -24,32 +23,36 @@ class Gantt extends Component {
     }
 
     componentDidUpdate() {
-        console.log("UPDATE");
         if (this.props.tasks.data === undefined) {
             return;
         }
-        console.log('remd', this.props.tasks);
-
-        gantt.parse(this.props.tasks);
-
+        let daty = this.props.tasks;
+        //this.setGanttConfig(this.props.config);
+        gantt.clearAll();
+        gantt.parse(daty);
         gantt.render();
+        gantt.refreshData();
     }
 
     /**
      * @todo
      * @param configuration
      */
-    setGanttConfig(configuration = {}) {
+    setGanttConfig(configurationArray = {}) {
+        console.log("UPDATE", this.props.config, this.props.tasks.data);
+        for(let configurationType in configurationArray) {
 
-        for(var propertyName in configuration) {
-            console.log(propertyName);
-            gantt.config[propertyName] = configuration[propertyName];
+            for(var propertyName in configurationArray[configurationType]) {
+                gantt[configurationType][propertyName] = configurationArray[configurationType][propertyName];
+                console.log(propertyName);
+            }
         }
-
+        /* global gantt */
+        gantt.config.show_unscheduled = true;
     }
 
     render() {
-        const { config } = this.props;
+         const { config } = this.props;
 
         this.setGanttConfig(config);
 

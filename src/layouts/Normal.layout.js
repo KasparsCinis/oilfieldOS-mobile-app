@@ -34,6 +34,7 @@ const layoutStyles = theme => ({
         maxHeight: "100%",
         width: "100%",
         overflowScrolling: "touch",
+        webkitOverflowScrolling: "touch",
         height: "100%"
     },
     content: {

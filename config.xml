@@ -25,5 +25,6 @@
     </platform>
     <engine name="android" spec="^7.0.0" />
     <engine name="browser" spec="^5.0.4" />
-    <engine name="ios" spec="~4.5.5" />
+    <engine name="ios" spec="^4.5.5" />
+    <plugin name="cordova-plugin-wkwebview-engine" spec="^1.1.4" />
 </widget>

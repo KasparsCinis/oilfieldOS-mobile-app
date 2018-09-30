@@ -38,7 +38,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
 
     return (
         <div>
-            <Hidden mdDown implementation="css">
+            <Hidden smDown implementation="css">
                 <Paper>
                     <Tabs
                         value={activeTab}
@@ -54,7 +54,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                 </Paper>
                 <br />
             </Hidden>
-            <Hidden smUp implementation="css" className={classes.fixedFooter}>
+            <Hidden mdUp implementation="css" className={classes.fixedFooter}>
                 <BottomNavigation
                     value={activeTab}
                     onChange={changeTab}

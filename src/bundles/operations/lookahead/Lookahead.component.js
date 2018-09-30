@@ -18,6 +18,7 @@ import ShowChart from '@material-ui/icons/ShowChart';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 import Check from '@material-ui/icons/Check';
 import Gantt from "../../../components/gantt";
+import './Lookahead.style.css';
 
 const styles = theme => ({
 

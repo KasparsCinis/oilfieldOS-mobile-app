@@ -1,0 +1,7 @@
+.project-task{
+    background-color:green;
+}
+.project-task .gantt_task_progress_wrapper .gantt_task_progress{
+    background-color:green;
+    background:green;
+}
