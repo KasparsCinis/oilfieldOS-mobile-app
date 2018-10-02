@@ -32,6 +32,10 @@
         "source": "C:\\Users\\kasdi\\Desktop\\software\\oilfieldOS-mobile-app\\platforms\\android\\app\\src\\main\\res\\mipmap-hdpi\\icon.png"
     },
     {
+        "merged": "C:\\Users\\kasdi\\Desktop\\software\\oilfieldOS-mobile-app\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml_camera_provider_paths.xml.flat",
+        "source": "C:\\Users\\kasdi\\Desktop\\software\\oilfieldOS-mobile-app\\platforms\\android\\app\\src\\main\\res\\xml\\camera_provider_paths.xml"
+    },
+    {
         "merged": "C:\\Users\\kasdi\\Desktop\\software\\oilfieldOS-mobile-app\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml_config.xml.flat",
         "source": "C:\\Users\\kasdi\\Desktop\\software\\oilfieldOS-mobile-app\\platforms\\android\\app\\src\\main\\res\\xml\\config.xml"
     },

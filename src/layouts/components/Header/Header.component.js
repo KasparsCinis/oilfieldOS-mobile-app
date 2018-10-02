@@ -1,6 +1,8 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import {NavLink} from "react-router-dom";
+
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import AppBar from "@material-ui/core/AppBar";
@@ -86,6 +88,9 @@ function Header({ classes, isShown, handleProfileMenu, handleProjectMenu, handle
                         open={openProfileDropdown}
                         onClose={handleClose}
                     >
+                        <NavLink to='/profile'>
+                            <MenuItem>Profile</MenuItem>
+                        </NavLink>
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </Menu>
                 </Hidden>

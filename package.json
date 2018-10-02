@@ -56,6 +56,7 @@
     "cordova-android": "^7.0.0",
     "cordova-browser": "^5.0.4",
     "cordova-ios": "^4.5.5",
+    "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-plugin-wkwebview-engine": "^1.1.4",
     "dhtmlx-gantt": "^5.2.0",
@@ -81,7 +82,6 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "electron": "electron .",
     "dev": "nf start -p 3000"
   },
   "jest": {
@@ -119,7 +119,8 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-wkwebview-engine": {}
+      "cordova-plugin-wkwebview-engine": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "android",

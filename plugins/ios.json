@@ -12,6 +12,9 @@
     },
     "cordova-plugin-wkwebview-engine": {
       "PACKAGE_NAME": "apriside.oilfieldos.mobile"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "apriside.oilfieldos.mobile"
     }
   },
   "dependent_plugins": {}

@@ -16,6 +16,7 @@ import {drawerWidth} from "./components/dashboard.style";
 import Session from "../bundles/user/Session/Session";
 import AnalyticsContainer from "../bundles/project/analytics/Analytics.container";
 import LookaheadContainer from "../bundles/operations/lookahead/Lookahead.container";
+import ProfileContainer from "../bundles/user/profile/Profile.container";
 
 const layoutStyles = theme => ({
     wrapper: {
@@ -96,6 +97,7 @@ const switchRoutes = (
         <Route path='/dashboard' component={DashboardContainer} key={1} />
         <Route path='/analytics' component={AnalyticsContainer} key={2} />
         <Route path='/lookahead' component={LookaheadContainer} key={3} />
+        <Route path='/profile' component={ProfileContainer} key={4} />
     </Switch>
 );
 
