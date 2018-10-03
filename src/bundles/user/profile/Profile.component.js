@@ -10,7 +10,7 @@ const ProfileComponent = ({ classes }) => {
 
     return (
         <div>
-            PROFILEsssss
+            Profile....
 
         </div>
     );

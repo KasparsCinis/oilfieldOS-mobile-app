@@ -1,3 +1,4 @@
 node_modules
 .idea/
 www
+./platforms/android/app/*

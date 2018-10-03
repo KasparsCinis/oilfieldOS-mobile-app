@@ -36,9 +36,9 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
+  "cordova-plugin-camera": "4.0.3",
   "cordova-plugin-whitelist": "1.3.3",
-  "cordova-plugin-wkwebview-engine": "1.1.4",
-  "cordova-plugin-camera": "4.0.3"
+  "cordova-plugin-wkwebview-engine": "1.1.4"
 };
 // BOTTOM OF METADATA
 });

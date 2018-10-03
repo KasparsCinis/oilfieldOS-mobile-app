@@ -168,6 +168,18 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                     </div>
 
                     <div className={openMobileProfileTab ? classes.sidebarWrapper : classes.hidden}>
+                        <NavLink to='/profile'>
+                            <ListItem button className={classes.itemLink}>
+                                <ListItemIcon className={classes.itemIcon}>
+                                    <Icon>home</Icon>
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary='Profile'
+                                    className={classes.itemText}
+                                    disableTypography={true}
+                                />
+                            </ListItem>
+                        </NavLink>
                         <ListItem button className={classes.itemLink} onClick={handleLogout}>
                             <ListItemIcon className={classes.itemIcon}>
                                 <ExitToApp />

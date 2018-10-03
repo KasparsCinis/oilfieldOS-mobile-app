@@ -1,4 +1,0 @@
-#Tue Oct 02 17:46:52 CEST 2018
-base.0=C\:\\Users\\kasdi\\Desktop\\software\\oilfieldOS-mobile-app\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-renamed.0=classes.dex
-file.0=C\:\\Users\\kasdi\\Desktop\\software\\oilfieldOS-mobile-app\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex
