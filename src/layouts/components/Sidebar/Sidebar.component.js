@@ -22,13 +22,15 @@ import ExitToApp from '@material-ui/icons/ExitToApp';
 
 // core components
 import sidebarStyle from "./Sidebar.style.js";
+import UserAvatar from "../../../components/UserAvatar";
+import IconButton from "@material-ui/core/IconButton/IconButton";
 
-const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle, handleLogout, name, email, openMobileProfileTab, ...props }) => {
+const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle, handleLogout, user, openMobileProfileTab, ...props }) => {
     // verifies if routeName is the one active (in browser input)
     function activeRoute(routeName) {
         return props.location.pathname.indexOf(routeName) > -1 ? true : false;
     }
-
+    console.log(user);
     const { classes, color, routes } = props;
     var links = (
         <List>
@@ -145,24 +147,29 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                         keepMounted: true // Better open performance on mobile.
                     }}
                 >
-                    <div className={classes.mobileContent} onClick={handleMobileTabToggle}>
+                    <div className={classes.mobileContent}>
                         <div>
-                            <AccountCircle className={classes.mobileAvatar} />
+                            <UserAvatar user={user}/>
                         </div>
                         <div className={classes.mobileTitleContent}>
                             <div>
                                 <Typography variant='body1' className={classes.mobileTitle}>
-                                    {name}
+                                    {user.name}
                                 </Typography>
                                 <Typography variant='body2' className={classes.mobileSubTitle}>
-                                    {email}
+                                    {user.email}
                                 </Typography>
                             </div>
+                            <IconButton
+                                onClick={handleMobileTabToggle}
+                                color="inherit"
+                            >
                             {openMobileProfileTab ?
                                 <ExpandMore className={classes.expandableIcon} />
                                 :
                                 <ExpandLess className={classes.expandableIcon} />
                             }
+                            </IconButton>
                         </div>
                     </div>
                     <div className={openMobileProfileTab ? classes.hidden : classes.sidebarWrapper}>
@@ -173,7 +180,7 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                         <NavLink to='/profile' style={{textDecoration:'none'}}>
                             <ListItem button className={classes.itemLink}>
                                 <ListItemIcon className={classes.itemIcon}>
-                                    <Icon>home</Icon>
+                                    <Icon>account_box</Icon>
                                 </ListItemIcon>
                                 <ListItemText
                                     primary='Profile'

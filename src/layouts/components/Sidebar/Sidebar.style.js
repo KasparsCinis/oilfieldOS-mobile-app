@@ -81,20 +81,23 @@ const sidebarStyle = theme => ({
     },
     mobileContent: {
         padding: "10px",
-        backgroundColor: 'white'
+        backgroundColor: theme.palette.primary.A400,
+        color:'white'
     },
     mobileAvatar: {
         fontSize: "40px"
     },
     mobileTitle: {
-        fontSize: "13px"
+        fontSize: "13px",
+        color:'white'
     },
     mobileSubTitle: {
-        fontSize: "10px"
+        fontSize: "10px",
+        color:'white'
     },
     mobileTitleContent: {
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     hidden: {
         display: 'none'

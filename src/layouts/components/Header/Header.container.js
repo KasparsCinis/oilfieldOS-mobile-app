@@ -123,6 +123,7 @@ class HeaderContainer extends React.PureComponent {
 
 const mapStateToProps = (state, ownProps) => ({
     projects: state.session.user.projects,
+    user: state.session.user,
 });
 
 export default connect( mapStateToProps )(HeaderContainer);

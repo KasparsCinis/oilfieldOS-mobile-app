@@ -59,8 +59,7 @@ class SidebarContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     logo: Session.getCurrentCompany() ? Session.getCurrentCompany().logo : '',
-    name: Session.getCurrentUser() ? Session.getCurrentUser().name : '',
-    email: Session.getCurrentUser() ? Session.getCurrentUser().email : '',
+    user: state.session.user,
 });
 
 export default connect( mapStateToProps )(SidebarContainer);

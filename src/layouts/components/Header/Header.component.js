@@ -19,14 +19,14 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 // @material-ui/icons
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import { default as MenuIcon } from "@material-ui/icons/Menu";
 
 import headerStyle from "./Header.style.js";
 import Session from "../../../bundles/user/Session/Session";
+import UserAvatar from "../../../components/UserAvatar";
 
 function Header({ classes, isShown, handleProfileMenu, handleProjectMenu, handleClose, handleLogout, handleProjectDialog, profileAnchorEl,
-                    projectAnchorEl, openProjectDialog, projects, handleProjectChange, ...props }) {
+                    projectAnchorEl, openProjectDialog, projects, handleProjectChange, user, ...props }) {
 
     function getProject() {
         return Session.getActiveProject().name;
@@ -72,7 +72,7 @@ function Header({ classes, isShown, handleProfileMenu, handleProjectMenu, handle
                         onClick={handleProfileMenu}
                         color="inherit"
                     >
-                        <AccountCircle />
+                        <UserAvatar user={user}/>
                     </IconButton>
                     <Menu
                         id="menu-appbar"

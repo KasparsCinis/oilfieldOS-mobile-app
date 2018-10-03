@@ -16,6 +16,7 @@ const initialState = {
         companies: [],
         projects: {},
         permissions: {},
+        params: {}
     }
 };
 
