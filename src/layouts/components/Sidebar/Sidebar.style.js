@@ -98,7 +98,11 @@ const sidebarStyle = theme => ({
     },
     hidden: {
         display: 'none'
+    },
+    itemLink: {
+        color: 'black'
     }
+
 });
 
 export default sidebarStyle;

@@ -88,7 +88,7 @@ function Header({ classes, isShown, handleProfileMenu, handleProjectMenu, handle
                         open={openProfileDropdown}
                         onClose={handleClose}
                     >
-                        <NavLink to='/profile'>
+                        <NavLink to='/profile' style={{textDecoration:'none'}}>
                             <MenuItem>Profile</MenuItem>
                         </NavLink>
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>

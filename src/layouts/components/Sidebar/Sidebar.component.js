@@ -48,6 +48,7 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                                 className={classes.item}
                                 activeClassName="active"
                                 key={childrenKey}
+                                style={{textDecoration:'none'}}
                             >
                                 <ListItem button className={classes.itemLink + " " + classes.nested + whiteFontClasses}>
                                     <ListItemIcon className={classes.itemIcon}>
@@ -100,6 +101,7 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                             className={classes.item}
                             activeClassName="active"
                             key={key}
+                            style={{textDecoration:'none'}}
                         >
                             <ListItem button className={classes.itemLink + whiteFontClasses}>
                                 <ListItemIcon className={classes.itemIcon}>
@@ -168,7 +170,7 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                     </div>
 
                     <div className={openMobileProfileTab ? classes.sidebarWrapper : classes.hidden}>
-                        <NavLink to='/profile'>
+                        <NavLink to='/profile' style={{textDecoration:'none'}}>
                             <ListItem button className={classes.itemLink}>
                                 <ListItemIcon className={classes.itemIcon}>
                                     <Icon>home</Icon>
