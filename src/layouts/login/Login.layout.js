@@ -1,5 +1,5 @@
 import React from "react";
-import LoginContainer from "../bundles/user/Login/Login.container";
+import LoginContainer from "../../bundles/user/Login/Login.container";
 import { Switch, Route } from "react-router-dom";
 
 class LoginLayout extends React.Component {

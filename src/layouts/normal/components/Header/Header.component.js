@@ -22,8 +22,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { default as MenuIcon } from "@material-ui/icons/Menu";
 
 import headerStyle from "./Header.style.js";
-import Session from "../../../bundles/user/Session/Session";
-import UserAvatar from "../../../components/UserAvatar";
+import Session from "../../../../bundles/user/Session/Session";
+import UserAvatar from "../../../../components/UserAvatar";
 
 function Header({ classes, isShown, handleProfileMenu, handleProjectMenu, handleClose, handleLogout, handleProjectDialog, profileAnchorEl,
                     projectAnchorEl, openProjectDialog, projects, handleProjectChange, user, ...props }) {

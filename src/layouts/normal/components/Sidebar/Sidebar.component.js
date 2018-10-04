@@ -22,7 +22,7 @@ import ExitToApp from '@material-ui/icons/ExitToApp';
 
 // core components
 import sidebarStyle from "./Sidebar.style.js";
-import UserAvatar from "../../../components/UserAvatar";
+import UserAvatar from "../../../../components/UserAvatar";
 import IconButton from "@material-ui/core/IconButton/IconButton";
 
 const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle, handleLogout, user, openMobileProfileTab, ...props }) => {

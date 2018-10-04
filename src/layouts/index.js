@@ -1,5 +1,5 @@
-import LoginLayout from "./Login.layout";
-import NormalLayout from "./Normal.layout";
+import LoginLayout from "./login/Login.layout";
+import NormalLayout from "./normal/Normal.layout";
 
 const layoutRoutes = [
     { path: "/user/login", component: LoginLayout },

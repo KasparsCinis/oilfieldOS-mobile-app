@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header.component';
-import Session from "../../../bundles/user/Session/Session";
+import Session from "../../../../bundles/user/Session/Session";
 import {connect} from "react-redux";
 
 class HeaderContainer extends React.PureComponent {

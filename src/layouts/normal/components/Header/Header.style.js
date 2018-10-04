@@ -31,6 +31,7 @@ const headerStyle = theme => ({
     },
     appNormal: {
         width: `calc(100% - ${drawerWidth}px)`,
+        padding:'3px'
     },
     hidden: {
         [theme.breakpoints.down("md")]: {

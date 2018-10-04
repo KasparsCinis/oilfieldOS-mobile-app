@@ -8,15 +8,15 @@ import HeaderContainer from "./components/Header/Header.container";
 import Footer from "./components/Footer/Footer.component";
 import Sidebar from "./components/Sidebar/Sidebar.container";
 
-import NotFoundContainer from '../bundles/common/NotFound/NotFound';
-import DashboardContainer from '../bundles/user/Dashboard/Dashboard.container';
+import NotFoundContainer from '../../bundles/common/NotFound/NotFound';
+import DashboardContainer from '../../bundles/user/Dashboard/Dashboard.container';
 
-import Component from "../components/component";
+import Component from "../../components/component";
 import {drawerWidth} from "./components/dashboard.style";
-import Session from "../bundles/user/Session/Session";
-import AnalyticsContainer from "../bundles/project/analytics/Analytics.container";
-import LookaheadContainer from "../bundles/operations/lookahead/Lookahead.container";
-import ProfileContainer from "../bundles/user/profile/Profile.container";
+import Session from "../../bundles/user/Session/Session";
+import AnalyticsContainer from "../../bundles/project/analytics/Analytics.container";
+import LookaheadContainer from "../../bundles/operations/lookahead/Lookahead.container";
+import ProfileContainer from "../../bundles/user/profile/Profile.container";
 
 const layoutStyles = theme => ({
     wrapper: {
