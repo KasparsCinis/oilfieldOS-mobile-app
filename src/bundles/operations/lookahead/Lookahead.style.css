@@ -1,7 +1,16 @@
 .project-task{
-    background-color:green;
+    background-color:#82e27f;
 }
 .project-task .gantt_task_progress_wrapper .gantt_task_progress{
-    background-color:green;
-    background:green;
+    background-color:#82e27f;
+}
+.gantt_layout_cell{
+    z-index:5;
+}
+.gantt_grid_head_cell,
+.gantt_scale_cell,
+.gantt_task .gantt_task_scale .gantt_scale_cell,
+.gantt_grid_scale .gantt_grid_head_cell{
+    background-color:#5da5e2;
+    color:black;
 }

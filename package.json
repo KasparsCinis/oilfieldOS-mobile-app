@@ -61,6 +61,8 @@
     "cordova-plugin-wkwebview-engine": "^1.1.4",
     "dhtmlx-gantt": "^5.2.0",
     "history": "^4.7.2",
+    "material-ui-pickers": "^1.0.0-rc.17",
+    "moment": "^2.22.2",
     "perfect-scrollbar": "^1.4.0",
     "plotly.js": "^1.41.0",
     "prop-types": "latest",

@@ -5,6 +5,9 @@ import { Provider } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 
+import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
+import MomentUtils from 'material-ui-pickers/utils/moment-utils';
+
 import layoutRoutes from "./layouts/index.js";
 import green from '@material-ui/core/colors/green';
 //import green from '@material-ui/core/colors/green';
@@ -34,18 +37,20 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const App = ({ classes, store, isLoading })  => (
-    <MuiThemeProvider theme={theme}>
-        <Provider store={store}>
-            <Router history={history}>
-                <Switch>
-                    {layoutRoutes.map((prop, key) => {
-                        return <Route path={prop.path} component={prop.component} key={key} />;
-                    })}
-                </Switch>
-            </Router>
-        </Provider>
-        <Loader store={store}/>
-    </MuiThemeProvider>
+    <MuiPickersUtilsProvider utils={MomentUtils}>
+        <MuiThemeProvider theme={theme}>
+            <Provider store={store}>
+                <Router history={history}>
+                    <Switch>
+                        {layoutRoutes.map((prop, key) => {
+                            return <Route path={prop.path} component={prop.component} key={key} />;
+                        })}
+                    </Switch>
+                </Router>
+            </Provider>
+            <Loader store={store}/>
+        </MuiThemeProvider>
+    </MuiPickersUtilsProvider>
 );
 
 App.propTypes = {

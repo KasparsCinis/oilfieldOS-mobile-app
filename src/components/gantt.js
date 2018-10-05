@@ -39,14 +39,14 @@ class Gantt extends Component {
      * @param configuration
      */
     setGanttConfig(configurationArray = {}) {
-        console.log("UPDATE", this.props.config, this.props.tasks.data);
+
         for(let configurationType in configurationArray) {
 
             for(var propertyName in configurationArray[configurationType]) {
                 gantt[configurationType][propertyName] = configurationArray[configurationType][propertyName];
-                console.log(propertyName);
             }
         }
+
         /* global gantt */
         gantt.config.show_unscheduled = true;
     }
