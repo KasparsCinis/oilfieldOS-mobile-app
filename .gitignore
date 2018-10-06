@@ -1,4 +1,4 @@
 node_modules
 .idea/
-www
+/www/*
 ./platforms/android/app/*
