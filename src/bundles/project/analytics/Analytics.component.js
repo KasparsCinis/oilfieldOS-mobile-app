@@ -25,7 +25,7 @@ const styles = theme => ({
         bottom: '0px',
         borderTop: '1px solid #d7d7d7',
         width: '100%',
-        zIndex: 10
+        zIndex: 1002
     },
 });
 
@@ -111,7 +111,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                 Depth Chart
                             </Typography>
                             <hr/>
-                            <Plot
+                            <PlotlyChart
                                 data={depthChart}
                                 layout={{
                                     xaxis: {
@@ -147,7 +147,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                 Productive vs NPT
                             </Typography>
                             <hr/>
-                            <Plot
+                            <PlotlyChart
                                 data={productiveNptChart}
                                 layout={{
                                     barmode: 'stack',
@@ -183,7 +183,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                 Ratio NPT - Productive
                             </Typography>
                             <hr/>
-                            <Plot
+                            <PlotlyChart
                                 data={productiveNptRatioChart}
                                 layout={{
                                     legend: {
@@ -212,7 +212,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                 NPT Spread
                             </Typography>
                             <hr/>
-                            <Plot
+                            <PlotlyChart
                                 data={nptSpreadChart}
                                 layout={{
                                     legend: {
@@ -241,7 +241,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                 ROP (ft/hr) per phase
                             </Typography>
                             <hr/>
-                            <Plot
+                            <PlotlyChart
                                 data={ropChart}
                                 layout={{
                                     legend: {
@@ -273,7 +273,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                 NPT Categories
                             </Typography>
                             <hr/>
-                            <Plot
+                            <PlotlyChart
                                 data={nptCategoryChart}
                                 layout={{
                                     legend: {
@@ -305,7 +305,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                 ILT Categories
                             </Typography>
                             <hr/>
-                            <Plot
+                            <PlotlyChart
                                 data={iltCategoryChart}
                                 layout={{
                                     legend: {
@@ -340,7 +340,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                     Daily Costs - {yesterdaysDate.toLocaleDateString("en-US")}
                                 </Typography>
                                 <hr/>
-                                <Plot
+                                <PlotlyChart
                                     data={dailyCostChart}
                                     layout={{
                                         legend: {
@@ -369,7 +369,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                     Weekly Costs
                                 </Typography>
                                 <hr/>
-                                <Plot
+                                <PlotlyChart
                                     data={weeklyCostChart}
                                     layout={{
                                         barmode: 'stack',
@@ -403,7 +403,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                     Costs per Vendor
                                 </Typography>
                                 <hr/>
-                                <Plot
+                                <PlotlyChart
                                     data={vendorCostChart}
                                     layout={{
                                         legend: {
@@ -435,7 +435,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                     Costs per Phase
                                 </Typography>
                                 <hr/>
-                                <Plot
+                                <PlotlyChart
                                     data={phaseCostChart}
                                     layout={{
                                         legend: {
@@ -470,7 +470,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                                     Actions per User
                                 </Typography>
                                 <hr/>
-                                <Plot
+                                <PlotlyChart
                                     data={actionsChart}
                                     layout={{
                                         yaxis: {
