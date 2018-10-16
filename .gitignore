@@ -1,3 +1,6 @@
 node_modules
 .idea/
-www
+/www/*
+www/
+/platforms/android/app/*
+/platforms/android/gradle/*

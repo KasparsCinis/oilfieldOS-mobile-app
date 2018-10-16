@@ -11,7 +11,7 @@ class PlotlyChart extends reduxComponent {
         const { layout, ...rest } = this.props;
 
         let config = {
-            scrollZoom: window.innerWidth < 960,
+            staticPlot: window.innerWidth < 960,
             modeBarButtonsToRemove: [
                 'sendDataToCloud',
                 'zoom2d',

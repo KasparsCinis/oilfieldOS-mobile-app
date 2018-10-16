@@ -7,6 +7,9 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "apriside.oilfieldos.mobile"
+    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "apriside.oilfieldos.mobile"
     },

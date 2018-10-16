@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container, Heading } from 'rebass';
 import { Flex } from 'reflexbox';
+import Typography from "@material-ui/core/Typography/Typography";
 
 const Dashboard = () => (
     <Container>
-        <Flex py={3} align="center">
-            <Heading level={3}>Dashboard</Heading>
-        </Flex>
+        <Typography variant='subheading' align='center'>
+            Dashboard
+        </Typography>
     </Container>
 );
 

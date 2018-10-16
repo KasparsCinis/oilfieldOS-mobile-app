@@ -1,4 +1,4 @@
 export const config = {
-    main_domain_url: 'http://oilfieldos.local',
-    http_protocol: 'http://'
+    main_domain_url: 'https://oilfield-os.com',
+    http_protocol: 'https://'
 };

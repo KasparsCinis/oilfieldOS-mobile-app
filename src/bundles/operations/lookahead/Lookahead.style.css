@@ -1,7 +1,122 @@
 .project-task{
-    background-color:green;
+    background-color:#82e27f;
 }
 .project-task .gantt_task_progress_wrapper .gantt_task_progress{
-    background-color:green;
-    background:green;
+    background-color:#82e27f;
+}
+.gantt_layout_cell{
+    z-index:5;
+}
+.gantt_grid_head_cell,
+.gantt_scale_cell,
+.gantt_task .gantt_task_scale .gantt_scale_cell,
+.gantt_grid_scale .gantt_grid_head_cell{
+    background-color:#5da5e2;
+    color:black;
+}
+.gantt_grid_data .gantt_cell{
+    width:0px;
+}
+.gantt_tree_indent{
+    width:0px;
+}
+.gantt_tree_icon.gantt_blank{
+    width:0px;
+}
+[data-column-name="no"] {
+    padding-left:3px;
+}
+.striped tbody>tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+/** @todo move to some general stylesheet? */
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width:100%;
+}
+
+.pobTable thead th{
+    border:1px solid #444847;
+}
+.pobTable tbody td{
+    border:1px solid #828685;
+    color:#373737;
+}
+.pobTable tbody td:not(:first-child){
+    text-align: center;
+}
+.pobTable tfoot{
+    border-top:2px solid black;
+    font-weight: 600;
+    text-align:center;
+}
+.pobTable tfoot tr>td{
+    border:1px solid #828685;
+}
+.pobTable tfoot tr:last-child{
+    border-top:2px solid black;
+}
+
+.flightTable>tbody>tr>td{
+    border:1px solid #828685;
+    color:#373737;
+    vertical-align: top;
+}
+.flightContent {
+    font-size: 12px;
+    background-color: #e6eef1;
+}
+.flightContent thead{
+    border-bottom:1px solid black;
+}
+.flightContent tfoot{
+    border-top:1px solid black;
+}
+.flightTime{
+    width:75px;
+
+}
+.flightTime .material-icons{
+    color:yellow;
+    font-size:15px;
+}
+.flightTime>span{
+    background-color:rgba(0,0,0,0.6);
+    color:white;
+    border-radius:5px;
+    padding:1px;
+}
+.transportTable{
+    table-layout: fixed;
+}
+.transportTable>thead>tr>th{
+    border:1px solid #444847;
+}
+.transportTable>tbody>tr>td{
+    border:1px solid #828685;
+    color:#373737;
+    text-align:center;
+}
+.transportTable .transportCell{
+    background-color: #dfdfdf;
+    padding:5px;
+}
+.transportCell span{
+    font-size:15px;
+    font-weight:600;
+}
+.transportCell td {
+    background-color: white;
+    border:1px solid gray;
+}
+.transportCell table{
+    border-spacing:0 3px;
+    border-collapse: initial;
+    font-size: 12px;
+}
+.transportTable .transportBackload{
+    background-color:#fdffca;
+    vertical-align: top;
 }
