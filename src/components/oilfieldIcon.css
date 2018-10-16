@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'oilfieldos';
+
+    src: url('../assets/fonts/oilfont.eot');
+    src: url('../assets/fonts/oilfont.eot') format('embedded-opentype'),
+        url('../assets/fonts/oilfont.woff') format('woff'),
+        url('../assets/fonts/oilfont.ttf') format('truetype'),
+        url('../assets/fonts/oilfont.svg') format('svg');
+
+    font-weight: normal;
+    font-style: normal;
+}

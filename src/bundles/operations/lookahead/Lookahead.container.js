@@ -2,7 +2,8 @@ import React from 'react';
 import Component from "../../../components/component";
 import LookaheadComponent from "./Lookahead.component";
 import {
-    fetchGanttChartData, fetchPobData,
+    fetchFlights,
+    fetchGanttChartData, fetchPobData, fetchTransportData,
 } from "./Lookahead.service";
 import Session from "../../user/Session/Session";
 import moment from "moment";
@@ -23,8 +24,13 @@ class LookaheadContainer extends Component {
         this.state = {
             pobData: {
                 models: [],
+                pobTotal: {
+                    totalDayData: []
+                },
                 permittedPob: 0
             },
+            transportData: [],
+            flightData: [],
             ganttData: {},
             numberOfDays: 7,
             ganttConfig: {
@@ -48,7 +54,8 @@ class LookaheadContainer extends Component {
                     'row_height':20,
                     'open_tree_initially': true,
                     'start_date':fromDate,
-                    'end_date':toDate
+                    'end_date':toDate,
+                    'touch' : 'force'
                 },
                 templates: {
                     'task_class': function (start, end, task) {
@@ -88,18 +95,22 @@ class LookaheadContainer extends Component {
              * Update gantt config start/end dates
              */
             let ganttConfig = this.state.ganttConfig;
-            let numberOfDays = this.state.fromDate.diff(this.state.toDate, 'days');
+            let numberOfDays = this.state.toDate.diff(this.state.fromDate, 'days');
 
             ganttConfig.config.start_date = this.state.fromDate;
             ganttConfig.config.end_date = this.state.toDate;
+
+            if (numberOfDays < 0) {
+                numberOfDays = 0;
+            }
 
             this.setState(prevState => ({
                 ...prevState,
                 ganttConfig: ganttConfig,
                 numberOfDays: numberOfDays
-            }));
-
-            this.fetchData();
+            }),() => {
+                this.fetchData();
+            });
         }
     }
 
@@ -143,10 +154,27 @@ class LookaheadContainer extends Component {
         fetchPobData(startDateFormatted, endDateFormatted)
             .then(response => response.json())
             .then(response => {
-                console.log(response);
                 this.setState(prevState => ({
                     ...prevState,
                     pobData: response,
+                }));
+            });
+
+        fetchTransportData(startDateFormatted, endDateFormatted, this.state.numberOfDays)
+            .then(response => response.json())
+            .then(response => {
+                this.setState(prevState => ({
+                    ...prevState,
+                    transportData: response,
+                }));
+            });
+
+        fetchFlights(startDateFormatted, endDateFormatted, this.state.numberOfDays)
+            .then(response => response.json())
+            .then(response => {
+                this.setState(prevState => ({
+                    ...prevState,
+                    flightData: response,
                 }));
             });
     }
@@ -155,6 +183,8 @@ class LookaheadContainer extends Component {
         return <LookaheadComponent
             ganttData={this.state.ganttData}
             pobData={this.state.pobData}
+            transportData={this.state.transportData}
+            flightData={this.state.flightData}
             config={this.state.ganttConfig}
             isDateModalOpen={this.state.isDateModalOpen}
             handleDateModalClose={this.handleDateModalClose}

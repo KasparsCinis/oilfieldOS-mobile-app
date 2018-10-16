@@ -10,10 +10,12 @@ import MomentUtils from 'material-ui-pickers/utils/moment-utils';
 
 import layoutRoutes from "./layouts/index.js";
 import green from '@material-ui/core/colors/green';
+import 'typeface-lato';
 //import green from '@material-ui/core/colors/green';
 
 import Loader from "./bundles/common/Loader/Loader.container";
 import history from './components/history';
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const theme = createMuiTheme({
     palette: {
@@ -30,11 +32,16 @@ const theme = createMuiTheme({
     status: {
         danger: 'orange',
     },
+    typography: {
+        fontFamily: [
+            'lato',
+        ].join(','),
+    },
 });
 
 const mapStateToProps = (state, ownProps) => ({
     isLoading: state.isLoading
-})
+});
 
 const App = ({ classes, store, isLoading })  => (
     <MuiPickersUtilsProvider utils={MomentUtils}>
