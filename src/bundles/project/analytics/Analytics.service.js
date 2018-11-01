@@ -41,16 +41,6 @@ export const fetchProductiveNptRatioChartData = () => {
         })
     });
 };
-export const fetchNptSpreadChartData = () => {
-    return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/analytics/operations-npt-spread-chart`, {
-        method: 'GET',
-        headers: new Headers({
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${Session.getToken()}`,
-        })
-    });
-};
 export const fetchRopChartData = () => {
     return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/analytics/operations-rop-chart`, {
         method: 'GET',
@@ -125,6 +115,18 @@ export const fetchCostPhaseChartData = () => {
 
 export const fetchActionsChartData = () => {
     return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/analytics/actions-chart`, {
+        method: 'GET',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Session.getToken()}`,
+        })
+    });
+};
+
+
+export const fetchHseChartData = () => {
+    return fetch(`${config.http_protocol}${Session.getCurrentDomain()}/api/analytics/hse-chart`, {
         method: 'GET',
         headers: new Headers({
             'Accept': 'application/json',

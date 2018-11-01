@@ -81,7 +81,7 @@ const sidebarStyle = theme => ({
     },
     mobileContent: {
         padding: "10px",
-        backgroundColor: theme.palette.primary.A400,
+        backgroundColor: theme.palette.primary.A700,
         color:'white'
     },
     mobileAvatar: {

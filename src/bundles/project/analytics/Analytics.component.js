@@ -16,7 +16,7 @@ import Tab from '@material-ui/core/Tab';
 
 import ShowChart from '@material-ui/icons/ShowChart';
 import AttachMoney from '@material-ui/icons/AttachMoney';
-import Check from '@material-ui/icons/Check';
+import Icon from "@material-ui/core/Icon";
 
 const styles = theme => ({
     fixedFooter: {
@@ -29,9 +29,9 @@ const styles = theme => ({
     },
 });
 
-const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeChart, depthChart, productiveNptChart, productiveNptRatioChart, nptSpreadChart,
+const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeChart, depthChart, productiveNptChart, productiveNptRatioChart,
                             ropChart, nptCategoryChart, iltCategoryChart, dailyCostChart, weeklyCostChart, predictedCostChart, vendorCostChart,
-                            phaseCostChart, actionsChart}) => {
+                            phaseCostChart, hseChart}) => {
 
     let yesterdaysDate = new Date();
     yesterdaysDate.setDate(new Date().getDate() - 1);
@@ -49,7 +49,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                     >
                         {visibleTabs[0] && <Tab label="Operations" icon={<ShowChart />}/> }
                         {visibleTabs[1] && <Tab label="Costs" icon={<AttachMoney />}/> }
-                        {visibleTabs[2] && <Tab label="Actions" icon={<Check />}/> }
+                        {visibleTabs[2] && <Tab label="HSE" icon={<Icon>local_hospital</Icon>}/> }
                     </Tabs>
                 </Paper>
                 <br />
@@ -62,7 +62,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                 >
                     {visibleTabs[0] && <BottomNavigationAction label="Operations" icon={<ShowChart />} /> }
                     {visibleTabs[1] && <BottomNavigationAction label="Costs" icon={<AttachMoney />} /> }
-                    {visibleTabs[2] && <BottomNavigationAction label="Actions" icon={<Check />} /> }
+                    {visibleTabs[2] && <BottomNavigationAction label="HSE" icon={<Icon>local_hospital</Icon>} /> }
                 </BottomNavigation>
             </Hidden>
 
@@ -209,36 +209,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                     <Card>
                         <CardContent>
                             <Typography variant="headline" component="h2">
-                                NPT Spread
-                            </Typography>
-                            <hr/>
-                            <PlotlyChart
-                                data={nptSpreadChart}
-                                layout={{
-                                    legend: {
-                                        orientation: 'h',
-                                        y: -0.15
-                                    },
-                                    margin: {
-                                        l: 40,
-                                        b: 10,
-                                        t: 20,
-                                        r: 0
-                                    },
-                                    autosize: true,
-                                }}
-                                useResizeHandler={true}
-                                style={{width: "100%", height: "100%"}}
-                            />
-                        </CardContent>
-                    </Card>
-                </Grid>
-
-                <Grid item xs={12} md={6} lg={4}>
-                    <Card>
-                        <CardContent>
-                            <Typography variant="headline" component="h2">
-                                ROP (ft/hr) per phase
+                                ROP per phase
                             </Typography>
                             <hr/>
                             <PlotlyChart
@@ -467,15 +438,16 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                         <Card>
                             <CardContent>
                                 <Typography variant="headline" component="h2">
-                                    Actions per User
+                                    Number of Incidents
                                 </Typography>
                                 <hr/>
                                 <PlotlyChart
-                                    data={actionsChart}
+                                    data={hseChart}
                                     layout={{
                                         yaxis: {
-                                            'title': 'Number of Actions'
+                                            'title': 'Number of Incidents'
                                         },
+                                        showlegend: false,
                                         margin: {
                                             l: 60,
                                             b: 100,

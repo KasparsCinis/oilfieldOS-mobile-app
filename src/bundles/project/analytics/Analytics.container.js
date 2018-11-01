@@ -2,15 +2,13 @@ import React from 'react';
 import Component from "../../../components/component";
 import AnalyticsComponent from "./Analytics.component";
 import {
-    fetchActionsChartData,
     fetchCostDailyChartData,
     fetchCostPhaseChartData,
     fetchCostVendorChartData,
     fetchCostWeeklyChartData,
-    fetchDepthChartData,
+    fetchDepthChartData, fetchHseChartData,
     fetchIltCategoryChartData,
     fetchNptCategoryChartData,
-    fetchNptSpreadChartData,
     fetchProductiveNptChartData,
     fetchProductiveNptRatioChartData,
     fetchRopChartData,
@@ -32,7 +30,6 @@ class AnalyticsContainer extends Component {
             depthChart: [],
             productiveNptChart: [],
             productiveNptRatioChart: [],
-            nptSpreadChart: [],
             ropChart: [],
             nptCategoryChart: [],
             iltCategoryChart: [],
@@ -42,7 +39,7 @@ class AnalyticsContainer extends Component {
             vendorCostChart: [],
             phaseCostChart: [],
 
-            actionsChart: []
+            hseChart: []
         };
 
         this.validatePermission('operations-view-analytics');
@@ -108,15 +105,6 @@ class AnalyticsContainer extends Component {
                     this.setState(prevState => ({
                         ...prevState,
                         productiveNptRatioChart: response
-                    }));
-                });
-
-            fetchNptSpreadChartData()
-                .then(response => response.json())
-                .then(response => {
-                    this.setState(prevState => ({
-                        ...prevState,
-                        nptSpreadChart: response
                     }));
                 });
 
@@ -193,12 +181,12 @@ class AnalyticsContainer extends Component {
          * Actions charts
          */
         if (tab === 2 && !this.state.loadedTabs[2]) {
-            fetchActionsChartData()
+            fetchHseChartData()
                 .then(response => response.json())
                 .then(response => {
                     this.setState(prevState => ({
                         ...prevState,
-                        actionsChart: response
+                        hseChart: response
                     }));
                 });
         }
@@ -230,7 +218,6 @@ class AnalyticsContainer extends Component {
             depthChart={this.state.depthChart}
             productiveNptChart={this.state.productiveNptChart}
             productiveNptRatioChart={this.state.productiveNptRatioChart}
-            nptSpreadChart={this.state.nptSpreadChart}
             ropChart={this.state.ropChart}
             nptCategoryChart={this.state.nptCategoryChart}
             iltCategoryChart={this.state.iltCategoryChart}
@@ -240,7 +227,7 @@ class AnalyticsContainer extends Component {
             vendorCostChart={this.state.vendorCostChart}
             phaseCostChart={this.state.phaseCostChart}
 
-            actionsChart={this.state.actionsChart}
+            hseChart={this.state.hseChart}
 
             activeTab={this.state.activeTab}
             visibleTabs={this.state.visibleTabs}

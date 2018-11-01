@@ -73,7 +73,7 @@ class LookaheadContainer extends Component {
             datesChanged: false
         };
 
-        this.validatePermission('');
+        this.validatePermission('operations-view-lookahead');
 
         this.handleDateModalClose = this.handleDateModalClose.bind(this);
         this.handleDateModalOpen = this.handleDateModalOpen.bind(this);
