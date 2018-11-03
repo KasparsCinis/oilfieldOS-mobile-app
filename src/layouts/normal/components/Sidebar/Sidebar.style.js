@@ -49,7 +49,7 @@ const sidebarStyle = theme => ({
         backgroundColor: "white",
     },
     active: {
-
+        backgroundColor: 'rgb(230,230,230)'
     },
     logoImage: {
         maxWidth: "60px",
@@ -103,7 +103,8 @@ const sidebarStyle = theme => ({
         display: 'none'
     },
     itemLink: {
-        color: 'black'
+        color: 'black',
+        backgroundColor: 'inherit'
     }
 
 });

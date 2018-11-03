@@ -7,6 +7,7 @@
     <author email="kc@apriside.com" href="http://apriside.xom">
         OilfieldOS dev Team
     </author>
+    <icon src="src/assets/logos/logo_126px.png"/>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

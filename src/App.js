@@ -10,6 +10,7 @@ import MomentUtils from 'material-ui-pickers/utils/moment-utils';
 
 import layoutRoutes from "./layouts/index.js";
 import green from '@material-ui/core/colors/green';
+import orange from '@material-ui/core/colors/orange';
 import 'typeface-lato';
 //import green from '@material-ui/core/colors/green';
 
@@ -27,7 +28,9 @@ const theme = createMuiTheme({
             A500: "#2A3F54",
             A600: "#1e2e3d",
             A700: "#111623",
-        }
+        },
+        success: green,
+        warning: orange
     },
     status: {
         danger: 'orange',

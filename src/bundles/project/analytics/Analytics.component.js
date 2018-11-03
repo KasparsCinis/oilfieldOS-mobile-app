@@ -49,7 +49,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                     >
                         {visibleTabs[0] && <Tab label="Operations" icon={<ShowChart />}/> }
                         {visibleTabs[1] && <Tab label="Costs" icon={<AttachMoney />}/> }
-                        {visibleTabs[2] && <Tab label="HSE" icon={<Icon>local_hospital</Icon>}/> }
+                        {visibleTabs[2] && <Tab label="HSE" icon={<Icon>favorite</Icon>}/> }
                     </Tabs>
                 </Paper>
                 <br />
@@ -62,7 +62,7 @@ const AnalyticsComponent = ({ classes, activeTab, visibleTabs, changeTab, timeCh
                 >
                     {visibleTabs[0] && <BottomNavigationAction label="Operations" icon={<ShowChart />} /> }
                     {visibleTabs[1] && <BottomNavigationAction label="Costs" icon={<AttachMoney />} /> }
-                    {visibleTabs[2] && <BottomNavigationAction label="HSE" icon={<Icon>local_hospital</Icon>} /> }
+                    {visibleTabs[2] && <BottomNavigationAction label="HSE" icon={<Icon>favorite</Icon>} /> }
                 </BottomNavigation>
             </Hidden>
 

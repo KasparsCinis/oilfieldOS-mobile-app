@@ -52,6 +52,7 @@
   "dependencies": {
     "@material-ui/core": "^3.1.1",
     "@material-ui/icons": "^3.0.1",
+    "@material-ui/lab": "^3.0.0-alpha.22",
     "classnames": "latest",
     "cordova-android": "^7.0.0",
     "cordova-browser": "^5.0.4",

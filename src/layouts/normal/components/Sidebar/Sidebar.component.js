@@ -24,6 +24,7 @@ import ExitToApp from '@material-ui/icons/ExitToApp';
 import sidebarStyle from "./Sidebar.style.js";
 import UserAvatar from "../../../../components/UserAvatar";
 import IconButton from "@material-ui/core/IconButton/IconButton";
+import OilfieldIcon from "../../../../components/oilfieldIcon";
 
 const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle, handleLogout, user, openMobileProfileTab, ...props }) => {
     // verifies if routeName is the one active (in browser input)
@@ -48,17 +49,14 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                             <NavLink
                                 to={childrenProp.path}
                                 className={classes.item}
-                                activeClassName="active"
+                                activeClassName={classes.active}
                                 key={childrenKey}
                                 style={{textDecoration:'none'}}
                             >
                                 <ListItem button className={classes.itemLink + " " + classes.nested + whiteFontClasses}>
-                                    <ListItemIcon className={classes.itemIcon}>
-                                        <Icon>{childrenProp.icon}</Icon>
-                                    </ListItemIcon>
+                                    {childrenProp.icon}
                                     <ListItemText
                                         primary={childrenProp.sidebarName}
-                                        className={classes.itemText}
                                         disableTypography={true}
                                     />
                                 </ListItem>
@@ -69,10 +67,10 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                     return (
                         <div key={key} className={classes.item}>
                             <ListItem button onClick={() => handleModuleClick(key)} className={classes.itemLink + whiteFontClasses}>
-                                <ListItemIcon className={classes.itemIcon}>
-                                    <Icon>{prop.icon}</Icon>
+                                <ListItemIcon>
+                                    {prop.icon}
                                 </ListItemIcon>
-                                <ListItemText primary={prop.sidebarName} disableTypography={true} className={classes.itemText}/>
+                                <ListItemText primary={prop.sidebarName} disableTypography={true}/>
 
                                 <Hidden mdUp implementation="css">
                                     {collapseOpen[key] ?
@@ -101,17 +99,16 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                         <NavLink
                             to={prop.path}
                             className={classes.item}
-                            activeClassName="active"
+                            activeClassName={classes.active}
                             key={key}
                             style={{textDecoration:'none'}}
                         >
                             <ListItem button className={classes.itemLink + whiteFontClasses}>
-                                <ListItemIcon className={classes.itemIcon}>
-                                    <Icon>{prop.icon}</Icon>
+                                <ListItemIcon>
+                                    {prop.icon}
                                 </ListItemIcon>
                                 <ListItemText
                                     primary={prop.sidebarName}
-                                    className={classes.itemText}
                                     disableTypography={true}
                                 />
                             </ListItem>
@@ -179,23 +176,21 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                     <div className={openMobileProfileTab ? classes.sidebarWrapper : classes.hidden}>
                         <NavLink to='/profile' style={{textDecoration:'none'}}>
                             <ListItem button className={classes.itemLink}>
-                                <ListItemIcon className={classes.itemIcon}>
+                                <ListItemIcon>
                                     <Icon>account_box</Icon>
                                 </ListItemIcon>
                                 <ListItemText
                                     primary='Profile'
-                                    className={classes.itemText}
                                     disableTypography={true}
                                 />
                             </ListItem>
                         </NavLink>
                         <ListItem button className={classes.itemLink} onClick={handleLogout}>
-                            <ListItemIcon className={classes.itemIcon}>
+                            <ListItemIcon>
                                 <ExitToApp />
                             </ListItemIcon>
                             <ListItemText
                                 primary='Logout'
-                                className={classes.itemText}
                                 disableTypography={true}
                             />
                         </ListItem>

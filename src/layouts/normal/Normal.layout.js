@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import { Switch, Route } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
+import Icon from "@material-ui/core/Icon";
 
 import HeaderContainer from "./components/Header/Header.container";
 import Footer from "./components/Footer/Footer.component";
@@ -17,6 +18,8 @@ import Session from "../../bundles/user/Session/Session";
 import AnalyticsContainer from "../../bundles/project/analytics/Analytics.container";
 import LookaheadContainer from "../../bundles/operations/lookahead/Lookahead.container";
 import ProfileContainer from "../../bundles/user/profile/Profile.container";
+import IncidentsContainer from "../../bundles/hse/incidents/Incidents.container";
+import OilfieldIcon from "../../components/oilfieldIcon";
 
 const layoutStyles = theme => ({
     wrapper: {
@@ -65,28 +68,41 @@ const dashboardRoutes = [
     {
         path: "/dashboard",
         sidebarName: "Dashboard",
-        icon: 'home',
+        icon: <Icon>home</Icon>,
         visible: true,
         component: DashboardContainer
     },
     {
         path: "/analytics",
         sidebarName: "Analytics",
-        icon: 'bar_chart',
+        icon: <Icon>bar_chart</Icon>,
         permission: 'operations-view-analytics',
         visible: false,
         component: AnalyticsContainer
     },
     {
         sidebarName: "Operations",
-        icon: 'show_chart',
+        icon: <Icon>show_chart</Icon>,
         children: [
             {
                 path: "/lookahead",
                 sidebarName: "Lookahead",
-                icon: 'compass_calibration',
-                permission: '...',
+                icon: <Icon>compass_calibration</Icon>,
+                permission: 'operations-view-lookahead',
                 component: LookaheadContainer
+            },
+        ]
+    },
+    {
+        sidebarName: "HSE",
+        icon: <Icon>favorite</Icon>,
+        children: [
+            {
+                path: "/incidents",
+                sidebarName: "Incidents",
+                icon: <OilfieldIcon>&#xe952;</OilfieldIcon>,
+                permission: 'opals-view-incidents',
+                component: IncidentsContainer
             },
         ]
     },
@@ -98,6 +114,7 @@ const switchRoutes = (
         <Route path='/analytics' component={AnalyticsContainer} key={2} />
         <Route path='/lookahead' component={LookaheadContainer} key={3} />
         <Route path='/profile' component={ProfileContainer} key={4} />
+        <Route path='/incidents' component={IncidentsContainer} key={5} />
     </Switch>
 );
 
