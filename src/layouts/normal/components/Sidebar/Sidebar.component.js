@@ -2,6 +2,10 @@ import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import {NavLink} from "react-router-dom";
+
+import {openModalElement} from '../../../../bundles/common/Modal/Modal.container';
+import ChangeCompanyModal from "../../../../modals/users/ChangeCompany.Modal";
+
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import Drawer from "@material-ui/core/Drawer";
@@ -17,16 +21,14 @@ import Typography from "@material-ui/core/Typography";
 
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import ExitToApp from '@material-ui/icons/ExitToApp';
 
 // core components
 import sidebarStyle from "./Sidebar.style.js";
 import UserAvatar from "../../../../components/UserAvatar";
 import IconButton from "@material-ui/core/IconButton/IconButton";
-import OilfieldIcon from "../../../../components/oilfieldIcon";
 
-const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle, handleLogout, user, openMobileProfileTab, ...props }) => {
+const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle, handleLogout, user, openMobileProfileTab, showChangeCompanyButton, ...props }) => {
     // verifies if routeName is the one active (in browser input)
     function activeRoute(routeName) {
         return props.location.pathname.indexOf(routeName) > -1 ? true : false;
@@ -185,6 +187,19 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
                                 />
                             </ListItem>
                         </NavLink>
+                        { showChangeCompanyButton ?
+                            <ListItem button className={classes.itemLink}
+                                      onClick={() => openModalElement(ChangeCompanyModal)}>
+                                <ListItemIcon>
+                                    <Icon>refresh</Icon>
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary='Change Company'
+                                    disableTypography={true}
+                                />
+                            </ListItem>
+                            : null
+                        }
                         <ListItem button className={classes.itemLink} onClick={handleLogout}>
                             <ListItemIcon>
                                 <ExitToApp />

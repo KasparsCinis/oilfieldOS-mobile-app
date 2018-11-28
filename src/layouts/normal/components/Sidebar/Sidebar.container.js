@@ -39,13 +39,14 @@ class SidebarContainer extends React.Component {
     }
 
     render() {
-        const { logo, ...rest } = this.props;
+        const { logo, showChangeCompanyButton, ...rest } = this.props;
 
         return (
             <Sidebar
                 logo={logo}
                 collapseOpen={this.state.openSidebarModules}
                 openMobileProfileTab={this.state.openMobileProfileTab}
+                showChangeCompanyButton={showChangeCompanyButton}
                 handleModuleClick={this.handleModuleClick}
                 handleMobileTabToggle={this.handleMobileTabToggle}
                 handleLogout={this.handleLogout}
@@ -60,6 +61,7 @@ class SidebarContainer extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     logo: Session.getCurrentCompany() ? Session.getCurrentCompany().logo : '',
     user: state.session.user,
+    showChangeCompanyButton: Object.keys(state.session.user.companies).length > 1
 });
 
 export default connect( mapStateToProps )(SidebarContainer);

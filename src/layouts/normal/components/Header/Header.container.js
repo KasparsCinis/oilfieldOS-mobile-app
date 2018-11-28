@@ -99,12 +99,13 @@ class HeaderContainer extends React.PureComponent {
     }
 
     render() {
-        const { projects, ...rest } = this.props;
+        const { projects, showChangeCompanyButton, ...rest } = this.props;
 
         return (
             <Header
                 isShown={this.state.shouldShow}
                 openProjectDialog={this.state.openProjectDialog}
+                showChangeCompanyButton={showChangeCompanyButton}
                 handleProfileMenu={this.handleProfileMenu}
                 handleProjectMenu={this.handleProjectMenu}
                 handleProjectDialog={this.handleProjectDialog}
@@ -124,6 +125,7 @@ class HeaderContainer extends React.PureComponent {
 const mapStateToProps = (state, ownProps) => ({
     projects: state.session.user.projects,
     user: state.session.user,
+    showChangeCompanyButton: Object.keys(state.session.user.companies).length > 1
 });
 
 export default connect( mapStateToProps )(HeaderContainer);

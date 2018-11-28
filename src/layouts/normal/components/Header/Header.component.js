@@ -24,9 +24,11 @@ import { default as MenuIcon } from "@material-ui/icons/Menu";
 import headerStyle from "./Header.style.js";
 import Session from "../../../../bundles/user/Session/Session";
 import UserAvatar from "../../../../components/UserAvatar";
+import ChangeCompanyModal from "../../../../modals/users/ChangeCompany.Modal";
+import {openModalElement} from "../../../../bundles/common/Modal/Modal.container";
 
 function Header({ classes, isShown, handleProfileMenu, handleProjectMenu, handleClose, handleLogout, handleProjectDialog, profileAnchorEl,
-                    projectAnchorEl, openProjectDialog, projects, handleProjectChange, user, ...props }) {
+                    projectAnchorEl, openProjectDialog, projects, handleProjectChange, user, showChangeCompanyButton, ...props }) {
 
     function getProject() {
         return Session.getActiveProject().name;
@@ -91,6 +93,13 @@ function Header({ classes, isShown, handleProfileMenu, handleProjectMenu, handle
                         <NavLink to='/profile' style={{textDecoration:'none'}}>
                             <MenuItem>Profile</MenuItem>
                         </NavLink>
+                        { showChangeCompanyButton ?
+                            <MenuItem
+                                      onClick={() => openModalElement(ChangeCompanyModal)}>
+                                Change Company
+                            </MenuItem>
+                            : null
+                        }
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </Menu>
                 </Hidden>
