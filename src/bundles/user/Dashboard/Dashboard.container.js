@@ -2,6 +2,7 @@ import React from 'react';
 import DashboardComponent from './Dashboard.component'
 import Component from "../../../components/component";
 import Session from "../Session/Session";
+
 import {fetchDailyCostValue, fetchTotalCostValue, fetchUserNotifications, fetchUserTodos} from "./Dashboard.service";
 
 class DashboardContainer extends Component {

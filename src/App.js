@@ -15,6 +15,7 @@ import 'typeface-lato';
 //import green from '@material-ui/core/colors/green';
 
 import Loader from "./bundles/common/Loader/Loader.container";
+import ModalContainer from "./bundles/common/Modal/Modal.container";
 import history from './components/history';
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -48,8 +49,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const App = ({ classes, store, isLoading })  => (
     <MuiPickersUtilsProvider utils={MomentUtils}>
-        <MuiThemeProvider theme={theme}>
-            <Provider store={store}>
+        <Provider store={store}>
+            <MuiThemeProvider theme={theme}>
                 <Router history={history}>
                     <Switch>
                         {layoutRoutes.map((prop, key) => {
@@ -57,9 +58,10 @@ const App = ({ classes, store, isLoading })  => (
                         })}
                     </Switch>
                 </Router>
-            </Provider>
-            <Loader store={store}/>
-        </MuiThemeProvider>
+                <Loader store={store}/>
+                <ModalContainer store={store}/>
+            </MuiThemeProvider>
+        </Provider>
     </MuiPickersUtilsProvider>
 );
 

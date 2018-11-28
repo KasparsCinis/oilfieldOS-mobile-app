@@ -53,7 +53,7 @@ export default class Session {
                         store.dispatch(sessionSuccess(userData));
 
                         disableLoader();
-                        
+
                         history.push('/dashboard');
                     })
                     .catch(error => {
@@ -137,6 +137,32 @@ export default class Session {
             })
             .catch(error => {
                 console.error('Error:', error)
+            });
+    }
+
+    static setActiveCompany(company) {
+        let user = this.getCurrentUser();
+        let domain = user.companies[company].url;
+
+        fetchUserCompanyData(Session.getToken(), domain)
+            .then(response => response.json())
+            .then(response => {
+                user.permissions = response.permissions;
+                user.activeWell  = response.activeWell;
+                user.projects       = response.projects;
+
+                store.dispatch(sessionSuccess(user));
+
+                disableLoader();
+
+                history.push('/dashboard');
+            })
+            .catch(error => {
+                store.dispatch(sessionFailed());
+
+                disableLoader();
+
+                console.error('Error:', error);
             });
     }
 
