@@ -222,3 +222,5 @@ function copyPublicFolder() {
     filter: file => file !== paths.appHtml
   });
 }
+
+///ADD '.' in front of the main css and js file in www folder
