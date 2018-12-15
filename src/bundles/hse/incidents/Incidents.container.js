@@ -2,6 +2,8 @@ import React from 'react';
 import Component from "../../../components/component";
 import IncidentsComponent from "./Incidents.component";
 import {fetchIncidents} from "./Incidents.service";
+import CreateIncidentModal from "../../../modals/hse/CreateIncident.Modal";
+import {openModalElement} from "../../common/Modal/Modal.container";
 
 class IncidentsContainer extends Component {
 
@@ -10,7 +12,6 @@ class IncidentsContainer extends Component {
 
         this.state = {
             speedDialOpen: false,
-            addDialogOpen: false,
             incidents: [],
             incidentTypes: []
         };
@@ -20,7 +21,6 @@ class IncidentsContainer extends Component {
         this.handleSpeedDialClick = this.handleSpeedDialClick.bind(this);
         this.handleSpeedDialOpen = this.handleSpeedDialOpen.bind(this);
         this.handleSpeedDialClose = this.handleSpeedDialClose.bind(this);
-        this.handleDialogClose = this.handleDialogClose.bind(this);
         this.handleDialogOpen = this.handleDialogOpen.bind(this);
     }
 
@@ -49,22 +49,13 @@ class IncidentsContainer extends Component {
         }));
     };
 
-    handleDialogClose = () => {
-        this.setState(prevState => ({
-            ...prevState,
-            addDialogOpen: false,
-        }));
-    };
-
     handleDialogOpen = () => {
-        this.setState(prevState => ({
-            ...prevState,
-            addDialogOpen: true,
-        }));
+        openModalElement(CreateIncidentModal, {
+            success: this.fetchData.bind(this)
+        })
     };
 
     fetchData() {
-
         fetchIncidents()
             .then(response => response.json())
             .then(response => {
@@ -74,7 +65,6 @@ class IncidentsContainer extends Component {
                     incidentTypes: response.types
                 }));
             });
-
     }
 
     render() {
@@ -87,8 +77,6 @@ class IncidentsContainer extends Component {
             handleSpeedDialOpen={this.handleSpeedDialOpen}
             handleSpeedDialClose={this.handleSpeedDialClose}
 
-            addDialogOpen={this.state.addDialogOpen}
-            handleDialogClose={this.handleDialogClose}
             handleDialogOpen={this.handleDialogOpen}
         />
     }

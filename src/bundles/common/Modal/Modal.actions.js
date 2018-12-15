@@ -4,14 +4,17 @@ import {
 } from './Modal.constants'
 
 /**
+ *
  * @param modal
- * @returns {{type: string, open: boolean, modal: *}}
+ * @param config
+ * @returns {{type: string, open: boolean, modal: *, config: *}}
  */
-export function openModal(modal) {
+export function openModal(modal, config) {
     return {
         type: MODAL_OPEN,
         open: true,
-        modal: modal
+        modal: modal,
+        config: config
     };
 }
 

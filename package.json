@@ -51,7 +51,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
-    "@material-ui/core": "^3.1.1",
+    "@material-ui/core": "^3.6.1",
     "@material-ui/icons": "^3.0.1",
     "@material-ui/lab": "^3.0.0-alpha.22",
     "classnames": "latest",
@@ -63,6 +63,7 @@
     "cordova-plugin-wkwebview-engine": "^1.1.4",
     "dhtmlx-gantt": "^5.2.0",
     "history": "^4.7.2",
+    "material-ui": "^0.20.2",
     "material-ui-pickers": "^1.0.0-rc.17",
     "moment": "^2.22.2",
     "perfect-scrollbar": "^1.4.0",

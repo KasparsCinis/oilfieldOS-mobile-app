@@ -18,7 +18,8 @@ const modal = (state = initialState, action) => {
             return {
                 ...state,
                 modal: action.modal,
-                open: action.open
+                open: action.open,
+                config: action.config
             };
         case MODAL_CLOSED:
             return {

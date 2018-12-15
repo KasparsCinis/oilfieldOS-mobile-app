@@ -4,3 +4,4 @@ node_modules
 www/
 /platforms/android/app/*
 /platforms/android/gradle/*
+/platforms/*

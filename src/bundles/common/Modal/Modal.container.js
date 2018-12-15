@@ -21,26 +21,27 @@ class ModalContainer extends Component {
     }
 
     render() {
-        const { modal, open } = this.props;
+        const { modal, open, modalConfig } = this.props;
 
         let ModalElement = open ? modal : 'div';
 
         return <div>
             {open}
-            <ModalElement/>
+            <ModalElement modalconfig={modalConfig}/>
         </div>
     }
 }
 
 const mapStateToProps = (state, ownProps) => ({
     modal: state.modal.modal,
-    open: state.modal.open
+    open: state.modal.open,
+    modalConfig: state.modal.config
 });
 
 export default connect( mapStateToProps )(ModalContainer);
 
-export function openModalElement(modal) {
-    store.dispatch(openModal(modal));
+export function openModalElement(modal, config = {}) {
+    store.dispatch(openModal(modal, config));
 }
 export function closeModalElement() {
     store.dispatch(closeModal());
