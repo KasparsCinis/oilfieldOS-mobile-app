@@ -11,43 +11,18 @@ class IncidentsContainer extends Component {
         super(props);
 
         this.state = {
-            speedDialOpen: false,
             incidents: [],
             incidentTypes: []
         };
 
         this.validatePermission('opals-view-incidents');
 
-        this.handleSpeedDialClick = this.handleSpeedDialClick.bind(this);
-        this.handleSpeedDialOpen = this.handleSpeedDialOpen.bind(this);
-        this.handleSpeedDialClose = this.handleSpeedDialClose.bind(this);
         this.handleDialogOpen = this.handleDialogOpen.bind(this);
     }
 
     componentWillMount() {
         this.fetchData();
     }
-
-    handleSpeedDialClick = () => {
-        this.setState(prevState => ({
-            ...prevState,
-            speedDialOpen: !prevState.speedDialOpen,
-        }));
-    };
-
-    handleSpeedDialOpen = () => {
-        this.setState(prevState => ({
-            ...prevState,
-            speedDialOpen: true,
-        }));
-    };
-
-    handleSpeedDialClose = () => {
-        this.setState(prevState => ({
-            ...prevState,
-            speedDialOpen: false,
-        }));
-    };
 
     handleDialogOpen = () => {
         openModalElement(CreateIncidentModal, {
@@ -71,11 +46,6 @@ class IncidentsContainer extends Component {
         return <IncidentsComponent
             incidents={this.state.incidents}
             incidentTypes={this.state.incidentTypes}
-
-            speedDialOpen={this.state.speedDialOpen}
-            handleSpeedDialClick={this.handleSpeedDialClick}
-            handleSpeedDialOpen={this.handleSpeedDialOpen}
-            handleSpeedDialClose={this.handleSpeedDialClose}
 
             handleDialogOpen={this.handleDialogOpen}
         />

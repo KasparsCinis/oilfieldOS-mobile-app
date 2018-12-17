@@ -19,6 +19,7 @@ import AnalyticsContainer from "../../bundles/project/analytics/Analytics.contai
 import LookaheadContainer from "../../bundles/operations/lookahead/Lookahead.container";
 import ProfileContainer from "../../bundles/user/profile/Profile.container";
 import IncidentsContainer from "../../bundles/hse/incidents/Incidents.container";
+import MeetingContainer from "../../bundles/project/meetings/Meeting.container";
 import OilfieldIcon from "../../components/oilfieldIcon";
 
 const layoutStyles = theme => ({
@@ -81,6 +82,14 @@ const dashboardRoutes = [
         component: AnalyticsContainer
     },
     {
+        path: "/meetings",
+        sidebarName: "Meetings",
+        icon: <OilfieldIcon style={{paddingRight:'5px'}}>&#xe971;</OilfieldIcon>,
+        permission: 'project-use-moms',
+        visible: false,
+        component: MeetingContainer
+    },
+    {
         sidebarName: "Operations",
         icon: <Icon>show_chart</Icon>,
         children: [
@@ -115,6 +124,7 @@ const switchRoutes = (
         <Route path='/lookahead' component={LookaheadContainer} key={3} />
         <Route path='/profile' component={ProfileContainer} key={4} />
         <Route path='/incidents' component={IncidentsContainer} key={5} />
+        <Route path='/meetings' component={MeetingContainer} key={1} />
     </Switch>
 );
 
