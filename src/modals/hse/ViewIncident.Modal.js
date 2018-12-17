@@ -51,42 +51,44 @@ class ViewIncidentModal extends Component {
         >
             <DialogTitle>Inspection #{this.state.incident.no}</DialogTitle>
             <DialogContent>
+                <form>
+                <label>Type</label>
                 <TextField
-                    multiline
                     margin="dense"
                     id="incident-details"
-                    label="Type"
                     type="text"
                     fullWidth
-                    defaultValue={this.state.incident.type}
+                    value={this.state.incident.type}
+                    read-only
                 />
+                <label>Headline</label>
                 <TextField
-                    multiline
                     margin="dense"
                     id="incident-details"
-                    label="Headline"
                     type="text"
                     fullWidth
                     value={this.state.incident.headline}
+                    read-only
                 />
+                <label>Details</label>
                 <TextField
-                    multiline
                     margin="dense"
                     id="incident-details"
-                    label="Details"
                     type="text"
                     fullWidth
                     value={this.state.incident.details}
+                    read-only
                 />
+                <label>Date</label>
                 <TextField
-                    multiline
                     margin="dense"
                     id="incident-details"
-                    label="Date"
                     type="text"
                     fullWidth
                     value={this.state.incident.date}
+                    read-only
                 />
+                </form>
             </DialogContent>
             <DialogActions>
                 <Button onClick={this.handleClose} color="default">
