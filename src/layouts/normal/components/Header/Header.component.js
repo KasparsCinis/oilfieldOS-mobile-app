@@ -28,7 +28,7 @@ import ChangeCompanyModal from "../../../../modals/users/ChangeCompany.Modal";
 import {openModalElement} from "../../../../bundles/common/Modal/Modal.container";
 
 function Header({ classes, isShown, handleProfileMenu, handleProjectMenu, handleClose, handleLogout, handleProjectDialog, profileAnchorEl,
-                    projectAnchorEl, openProjectDialog, projects, handleProjectChange, user, showChangeCompanyButton, ...props }) {
+                    projectAnchorEl, openProjectDialog, projects, handleProjectChange, user, showChangeCompanyButton, handleViewProject, ...props }) {
 
     function getProject() {
         return Session.getActiveProject().name;
@@ -64,6 +64,7 @@ function Header({ classes, isShown, handleProfileMenu, handleProjectMenu, handle
                         open={openProjectDropdown}
                         onClose={handleClose}
                     >
+                        <MenuItem onClick={handleViewProject}>View Project</MenuItem>
                         <MenuItem onClick={handleProjectDialog}>Change Project</MenuItem>
                     </Menu>
                 </div>

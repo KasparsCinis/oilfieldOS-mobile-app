@@ -20,6 +20,7 @@ import LookaheadContainer from "../../bundles/operations/lookahead/Lookahead.con
 import ProfileContainer from "../../bundles/user/profile/Profile.container";
 import IncidentsContainer from "../../bundles/hse/incidents/Incidents.container";
 import MeetingContainer from "../../bundles/project/meetings/Meeting.container";
+import ProjectContainer from "../../bundles/project/info/Project.container";
 import OilfieldIcon from "../../components/oilfieldIcon";
 
 const layoutStyles = theme => ({
@@ -125,6 +126,7 @@ const switchRoutes = (
         <Route path='/profile' component={ProfileContainer} key={4} />
         <Route path='/incidents' component={IncidentsContainer} key={5} />
         <Route path='/meetings' component={MeetingContainer} key={1} />
+        <Route path='/project' component={ProjectContainer} key={1} />
     </Switch>
 );
 

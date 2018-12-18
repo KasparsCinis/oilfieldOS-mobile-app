@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header.component';
 import Session from "../../../../bundles/user/Session/Session";
 import {connect} from "react-redux";
+import history from "../../../../components/history";
 
 class HeaderContainer extends React.PureComponent {
     constructor(props) {
@@ -23,6 +24,7 @@ class HeaderContainer extends React.PureComponent {
         this.handleProjectChange = this.handleProjectChange.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
+        this.handleViewProject = this.handleViewProject.bind(this);
     }
 
     componentDidMount() {
@@ -98,6 +100,15 @@ class HeaderContainer extends React.PureComponent {
         this.lastScroll = lastScroll;
     }
 
+    handleViewProject = () => {
+        this.setState(prevState => ({
+            ...prevState,
+            projectAnchorEl: null,
+        }));
+
+        history.push('/project');
+    };
+
     render() {
         const { projects, showChangeCompanyButton, ...rest } = this.props;
 
@@ -112,6 +123,7 @@ class HeaderContainer extends React.PureComponent {
                 handleClose={this.handleClose}
                 handleLogout={this.handleLogout}
                 handleProjectChange={this.handleProjectChange}
+                handleViewProject={this.handleViewProject}
                 profileAnchorEl={this.state.profileAnchorEl}
                 projectAnchorEl={this.state.projectAnchorEl}
                 projects={projects}
