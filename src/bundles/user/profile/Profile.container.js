@@ -12,20 +12,20 @@ class ProfileContainer extends Component {
     constructor(props) {
         super(props);
 
+        this.handleChangeProfilePicture = this.handleChangeProfilePicture.bind(this);
+    }
+
+    handleChangeProfilePicture() {
         /** global Camera */
         /* global Camera */
         if (window.cordova !== undefined) {
             navigator.camera.getPicture(
                 function (imageURI) {
-                    //var image = document.getElementById('myImage');
-
                     postProfileImage(imageURI)
                         .then(response => response.json())
                         .then(response => {
                             console.log(response);
                         });
-
-                    console.log(imageURI);
                 },
                 function () {
                     console.log("No camera");
@@ -34,18 +34,22 @@ class ProfileContainer extends Component {
                     destinationType: Camera.DestinationType.DATA_URL
                 });
         }
-
     }
 
     render() {
-        return <ProfileComponent
+        const { user } = this.props;
 
+        return <ProfileComponent
+            user={user}
+
+            handleChangeProfilePicture={this.handleChangeProfilePicture}
         />;
     }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    error: ''
+    error: '',
+    user: state.session.user
 });
 
 

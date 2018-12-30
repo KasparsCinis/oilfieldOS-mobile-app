@@ -9,10 +9,12 @@ class UserBox extends Component {
     }
 
     render() {
-        const { user } = this.props;
+        const { user, style } = this.props;
+
+        let baseStyle = {width:'50%',float:'left', padding:'5px 0px'};
 
         return (
-            <div style={{width:'50%',float:'left', padding:'5px 0px'}}>
+            <div style={{...baseStyle, ...style}}>
                 <Avatar src={null} style={{backgroundColor:'orange',float:'left'}}>
                     {user.firstName.substring(0, 1) + user.lastName.substring(0, 1)}
                 </Avatar>

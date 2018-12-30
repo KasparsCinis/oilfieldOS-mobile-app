@@ -3,7 +3,7 @@ import Component from "../../../components/component";
 import IncidentsComponent from "./Incidents.component";
 import {fetchIncidents} from "./Incidents.service";
 import CreateIncidentModal from "../../../modals/hse/CreateIncident.Modal";
-import {openModalElement} from "../../common/Modal/Modal.container";
+import {openModalElement as openModal} from "../../common/Modal/Modal.container";
 
 class IncidentsContainer extends Component {
 
@@ -25,7 +25,7 @@ class IncidentsContainer extends Component {
     }
 
     handleDialogOpen = () => {
-        openModalElement(CreateIncidentModal, {
+        openModal(CreateIncidentModal, {
             success: this.fetchData.bind(this)
         })
     };

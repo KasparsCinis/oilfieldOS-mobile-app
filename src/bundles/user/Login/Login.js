@@ -19,7 +19,7 @@ const styles = theme => ({
         position: 'fixed',
         width: `calc(100% - ${theme.spacing.unit * 6}px)`,
         height: '100%',
-        backgroundColor: theme.palette.primary.A100
+        backgroundColor: '#00aee0'
     },
     paper: {
         [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
