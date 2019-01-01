@@ -7,7 +7,7 @@ import {
 } from './Login.actions'
 import { loginQuery } from './Login.service';
 import { activateLoader, disableLoader } from '../../common/Loader/Loader.container';
-import Login from './Login'
+import LoginComponent from './Login.component'
 import Session from '../Session/Session';
 import history from "../../../components/history";
 
@@ -27,7 +27,7 @@ class LoginContainer extends Component {
     }
 
     render() {
-        return <Login
+        return <LoginComponent
             error={this.props.error}
             authenticate={this.props.authenticate}
         />;
@@ -82,6 +82,6 @@ const loginSubmit = (dispatch) => ({
                 console.error('Error:', error)
             });
     }
-})
+});
 
 export default connect( mapStateToProps, loginSubmit )(LoginContainer);

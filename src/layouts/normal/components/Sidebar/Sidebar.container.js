@@ -1,9 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Sidebar from './Sidebar.component';
 import Session from "../../../../bundles/user/Session/Session";
-import sidebarStyle from "./Sidebar.style";
-import withStyles from "@material-ui/core/styles/withStyles";
 import {connect} from "react-redux";
 
 class SidebarContainer extends React.Component {

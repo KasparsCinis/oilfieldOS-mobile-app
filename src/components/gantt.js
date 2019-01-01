@@ -6,10 +6,6 @@ import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 
 class Gantt extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         gantt.config.show_unscheduled = true;
 
@@ -27,7 +23,7 @@ class Gantt extends Component {
             return;
         }
         let daty = this.props.tasks;
-        //this.setGanttConfig(this.props.config);
+
         gantt.clearAll();
         gantt.parse(daty);
         gantt.render();
@@ -40,12 +36,11 @@ class Gantt extends Component {
      */
     setGanttConfig(configurationArray = {}) {
 
-        for(let configurationType in configurationArray) {
-
-            for(var propertyName in configurationArray[configurationType]) {
+        Object.keys(configurationArray).forEach((configurationType) => {
+            Object.keys(configurationArray[configurationType]).forEach((propertyName) => {
                 gantt[configurationType][propertyName] = configurationArray[configurationType][propertyName];
-            }
-        }
+            });
+        });
 
         /* global gantt */
         gantt.config.show_unscheduled = true;

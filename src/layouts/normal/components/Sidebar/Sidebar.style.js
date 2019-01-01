@@ -2,14 +2,7 @@ import {
     drawerWidth,
     drawerWidthMobile,
     transition,
-    boxShadow,
-    defaultFont,
-    primaryColor,
-    primaryBoxShadow,
-    infoColor,
-    successColor,
-    warningColor,
-    dangerColor
+    boxShadow
 } from "../dashboard.style.js";
 
 const sidebarStyle = theme => ({

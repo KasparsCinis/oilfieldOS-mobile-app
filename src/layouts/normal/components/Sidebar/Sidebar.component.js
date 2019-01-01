@@ -34,7 +34,7 @@ const Sidebar = ({ logo, collapseOpen, handleModuleClick, handleMobileTabToggle,
         return props.location.pathname.indexOf(routeName) > -1 ? true : false;
     }
 
-    const { classes, color, routes } = props;
+    const { classes, routes } = props;
     var links = (
         <List>
             {routes.map((prop, key) => {

@@ -8,8 +8,6 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {openModalElement} from "../../common/Modal/Modal.container";
-import ViewMeetingModal from "../../../modals/project/ViewMeeting.Modal";
 import UserBox from "../../../components/UserBox";
 
 const styles = theme => ({

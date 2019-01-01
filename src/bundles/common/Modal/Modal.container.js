@@ -5,8 +5,6 @@ import Session from "../../user/Session/Session";
 import { store } from '../../../index';
 import {openModal, closeModal} from "./Modal.actions";
 
-import ChangeCompanyModal from "../../../modals/users/ChangeCompany.Modal";
-
 class ModalContainer extends Component {
 
     constructor(props) {
@@ -32,7 +30,7 @@ class ModalContainer extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
     modal: state.modal.modal,
     open: state.modal.open,
     modalConfig: state.modal.config

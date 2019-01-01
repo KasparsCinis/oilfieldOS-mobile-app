@@ -7,13 +7,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import { DatePicker } from 'material-ui-pickers';
 import Icon from "@material-ui/core/Icon";
 
 import Gantt from "../../../components/gantt";
 import './Lookahead.style.css';
-import moment from "moment";
 import OilfieldIcon from "../../../components/oilfieldIcon";
 
 const styles = theme => ({
@@ -82,7 +80,7 @@ const LookaheadComponent = ({ classes, ganttData, pobData, transportData, flight
                             {Array(numberOfDays).fill(1).map((iterator, index) => {
                                 let date = fromDate.clone().add(index, 'days').format('DD/MM/YYYY');
 
-                                return <th key={index} colspan="2">{date}</th>
+                                return <th key={index} colSpan="2">{date}</th>
                             })}
                         </tr>
                         <tr>
@@ -91,7 +89,7 @@ const LookaheadComponent = ({ classes, ganttData, pobData, transportData, flight
                             {Array(numberOfDays * 2).fill(1).map((iterator, index) => {
                                 let text = (index % 2 === 0) ? "ON" : "OFF";
 
-                                return <th className={(index % 2 === 0) ? classes.pobSuccess : classes.pobDanger}>{text}</th>;
+                                return <th key={index} className={(index % 2 === 0) ? classes.pobSuccess : classes.pobDanger}>{text}</th>;
                             })}
                         </tr>
                     </thead>
@@ -127,7 +125,7 @@ const LookaheadComponent = ({ classes, ganttData, pobData, transportData, flight
                             {Array(numberOfDays * 2).fill(1).map((iterator, index) => {
                                 let text = (index % 2 === 0) ? "ON" : "OFF";
 
-                                return <td className={(index % 2 === 0) ? classes.pobSuccess : classes.pobDanger}>{text}</td>;
+                                return <td key={index} className={(index % 2 === 0) ? classes.pobSuccess : classes.pobDanger}>{text}</td>;
                             })}
                         </tr>
                         <tr>
@@ -188,20 +186,24 @@ const LookaheadComponent = ({ classes, ganttData, pobData, transportData, flight
                                         return <div key={flightIndex}>
                                             <table className={classes.flightHeader}>
                                                 <thead>
-                                                    <th style={{width:'25px'}}><OilfieldIcon>&#xe952;</OilfieldIcon></th>
-                                                    <th style={{textAlign:'left'}}>{flight.name}</th>
-                                                    <th className={'flightTime'}>
-                                                        <span>
-                                                            <Icon>access_time</Icon> {flight.time}
-                                                        </span>
-                                                    </th>
+                                                    <tr>
+                                                        <th style={{width:'25px'}}><OilfieldIcon>&#xe952;</OilfieldIcon></th>
+                                                        <th style={{textAlign:'left'}}>{flight.name}</th>
+                                                        <th className={'flightTime'}>
+                                                            <span>
+                                                                <Icon>access_time</Icon> {flight.time}
+                                                            </span>
+                                                        </th>
+                                                    </tr>
                                                 </thead>
                                             </table>
                                             <table className={'flightContent'}>
                                                 <thead>
-                                                    <th>Vendor</th>
-                                                    <th>Out</th>
-                                                    <th>In</th>
+                                                    <tr>
+                                                        <th>Vendor</th>
+                                                        <th>Out</th>
+                                                        <th>In</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
                                                     {rows}

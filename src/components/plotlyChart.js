@@ -3,10 +3,6 @@ import Plot from 'react-plotly.js';
 
 class PlotlyChart extends reduxComponent {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { layout, ...rest } = this.props;
 

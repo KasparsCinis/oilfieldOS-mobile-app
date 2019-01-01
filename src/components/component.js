@@ -1,4 +1,4 @@
-import React, { Component as reduxComponent } from 'react';
+import { Component as reduxComponent } from 'react';
 import history from "./history";
 import Session from "../bundles/user/Session/Session";
 

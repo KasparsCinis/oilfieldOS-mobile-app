@@ -2,7 +2,6 @@ import history from "../../../components/history";
 import {fetchUserData, fetchUserCompanyData, updateUserActiveProject} from "./Session.service";
 import {
     sessionFailed,
-    sessionLoading,
     sessionSuccess,
     sessionLogout
 } from "./Session.actions";

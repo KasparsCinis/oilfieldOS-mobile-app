@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import {config} from "../config";
 
 class UserBox extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const { user, style } = this.props;

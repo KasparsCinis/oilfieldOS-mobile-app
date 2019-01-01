@@ -9,7 +9,6 @@ import HeaderContainer from "./components/Header/Header.container";
 import Footer from "./components/Footer/Footer.component";
 import Sidebar from "./components/Sidebar/Sidebar.container";
 
-import NotFoundContainer from '../../bundles/common/NotFound/NotFound';
 import DashboardContainer from '../../bundles/user/Dashboard/Dashboard.container';
 
 import Component from "../../components/component";
@@ -172,7 +171,7 @@ class NormalLayout extends Component {
     }
 
     render() {
-        const { user, classes, ...rest } = this.props;
+        const { classes, ...rest } = this.props;
 
         /**
          * Go over every sidebar button and check if the user has permission for it

@@ -5,7 +5,6 @@ import {
     fetchFlights,
     fetchGanttChartData, fetchPobData, fetchTransportData,
 } from "./Lookahead.service";
-import Session from "../../user/Session/Session";
 import moment from "moment";
 
 class LookaheadContainer extends Component {
@@ -59,7 +58,7 @@ class LookaheadContainer extends Component {
                 },
                 templates: {
                     'task_class': function (start, end, task) {
-                        if (task.project == true) {
+                        if (task.project === true) {
                             return "project-task";
                         } else {
                             return "";

@@ -12,12 +12,10 @@ import layoutRoutes from "./layouts/index.js";
 import green from '@material-ui/core/colors/green';
 import orange from '@material-ui/core/colors/orange';
 import 'typeface-lato';
-//import green from '@material-ui/core/colors/green';
 
 import Loader from "./bundles/common/Loader/Loader.container";
 import ModalContainer from "./bundles/common/Modal/Modal.container";
 import history from './components/history';
-import withStyles from "@material-ui/core/styles/withStyles";
 
 const theme = createMuiTheme({
     palette: {
@@ -43,11 +41,11 @@ const theme = createMuiTheme({
     },
 });
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
     isLoading: state.isLoading
 });
 
-const App = ({ classes, store, isLoading })  => (
+const App = ({ classes, store })  => (
     <MuiPickersUtilsProvider utils={MomentUtils}>
         <Provider store={store}>
             <MuiThemeProvider theme={theme}>
@@ -67,6 +65,6 @@ const App = ({ classes, store, isLoading })  => (
 
 App.propTypes = {
     store: PropTypes.object.isRequired
-}
+};
 
 export default connect( mapStateToProps )(App);

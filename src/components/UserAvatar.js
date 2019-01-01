@@ -3,11 +3,6 @@ import Avatar from '@material-ui/core/Avatar';
 import {config} from "../config";
 
 class UserAvatar extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { user } = this.props;
 

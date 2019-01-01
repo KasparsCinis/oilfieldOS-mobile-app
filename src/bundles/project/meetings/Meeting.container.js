@@ -2,8 +2,6 @@ import React from 'react';
 import Component from "../../../components/component";
 import MeetingComponent from "./Meeting.component";
 import {fetchMeetings} from "./Meeting.service";
-import CreateIncidentModal from "../../../modals/hse/CreateIncident.Modal";
-import {openModalElement} from "../../common/Modal/Modal.container";
 
 class MeetingContainer extends Component {
 

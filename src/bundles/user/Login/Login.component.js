@@ -43,7 +43,7 @@ const styles = theme => ({
     },
 });
 
-const Login = ({ classes, authenticate, error }) => {
+const LoginComponent = ({ classes, authenticate, error }) => {
 
     let username;
     let password;
@@ -78,7 +78,7 @@ const Login = ({ classes, authenticate, error }) => {
                         <Input id="password" type='password' onChange={event => password = event.target.value} />
                         <FormHelperText>{error}</FormHelperText>
                     </FormControl>
-                    <Button className={classes.submit} variant="raised" color="primary" type="submit" fullWidth>
+                    <Button className={classes.submit} variant="contained" color="primary" type="submit" fullWidth>
                         Login
                     </Button>
                 </form>
@@ -87,4 +87,4 @@ const Login = ({ classes, authenticate, error }) => {
     )
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(LoginComponent);

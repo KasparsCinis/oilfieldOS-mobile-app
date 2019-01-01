@@ -1,12 +1,6 @@
 import {
     container,
     defaultFont,
-    primaryColor,
-    defaultBoxShadow,
-    infoColor,
-    successColor,
-    warningColor,
-    dangerColor,
     drawerWidth
 } from "../dashboard.style";
 

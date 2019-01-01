@@ -6,11 +6,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
-import {closeModalElement, openModalElement} from "../../bundles/common/Modal/Modal.container";
+import {closeModalElement} from "../../bundles/common/Modal/Modal.container";
 import {connect} from "react-redux";
 import {getMeeting} from "./MeetingModal.service";
-import Grid from "@material-ui/core/Grid/Grid";
-import Card from "@material-ui/core/Card/Card";
 
 class ViewMeetingModal extends Component {
 
